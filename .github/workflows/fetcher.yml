@@ -7,10 +7,10 @@ on:
 
 jobs:
   update:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./fetcher
-    runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout the repository content to github runner
@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: execute py script # run fetcher.py to get the latest data
-        run: python fetcher/fetcher.py
+        run: python fetcher.py
 
       - name: commit files
         run: |
