@@ -1,0 +1,51 @@
+name: 'Fetch latest data'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # At 00:00 on day-of-month 1 (~8AM MYT)
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: execute py script # run fetcher.py to get the latest data
+        run: python fetcher/fetcher.py
+
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m ":card_file_box: update db `date +"%m-%Y"`" -a
+
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
+      - name: telegram notify
+        uses: fjogeleit/http-request-action@v1.8.1
+        with:
+          url: 'https://api.telegram.org/bot${{secrets.TELE_BOT_API_KEY}}/sendMessage'
+          method: 'POST'
+          data: '{
+            "chat_id": -1001220707105,
+            "parse_mode": "MarkdownV2",
+            "disable_web_page_preview": true,
+            "text": "${{github.workflow}} *completed* \uD83C\uDF89 Latest data updated\\. Triggered by `${{github.event_name}}`\\. View [website](https:\/\/mpt-backup-api.herokuapp.com) or [action runs](https:\/\/github.com\/${{github.repository}}\/actions\/runs\/${{github.run_id}})\\."
+            }'
