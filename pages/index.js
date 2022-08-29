@@ -44,7 +44,7 @@ export default function Home(props) {
               <code className={styles.code}>GET</code>
               <br/>
               <code>https://mpt-server.vercel.app/api/solat/[locationCode]</code>
-                <br/><br/>
+              <br/><br/>
               View all location codes <a href="locations">here</a>
             </div>
 
@@ -88,17 +88,12 @@ export default function Home(props) {
   )
 }
 
-
-// Fetching data from the JSON file
-import fsPromises from 'fs/promises';
-import path from 'path'
+import {loadLog} from "../lib/load-json-db";
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'json/log.json');
-  const jsonData = await fsPromises.readFile(filePath);
-  const objectData = JSON.parse(jsonData);
+  const log = await loadLog();
 
   return {
-    props: objectData
+    props: log
   }
 }

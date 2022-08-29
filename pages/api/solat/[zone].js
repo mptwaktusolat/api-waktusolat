@@ -1,15 +1,14 @@
 import path from 'path';
 import { promises as fs } from 'fs';
+import {loadWaktuSolat} from "../../../lib/load-json-db";
 
 export default async function handler(req, res) {
     const { zone } = req.query
-    const jsonDirectory = path.join(process.cwd(), 'json');
-    const fileContents = await fs.readFile(jsonDirectory + '/db.json', 'utf8');
 
-    const allSolatTimes = JSON.parse(fileContents).solat;
+    const allSolatTimes = await loadWaktuSolat();
 
     // get the solat time for the provided zone
-    const solatTimes = allSolatTimes.find(solat => solat.zone === zone.toUpperCase());
+    const solatTimes = allSolatTimes.solat.find(solat => solat.zone === zone.toUpperCase());
 
     // if no solat time found for the provided zone, return error
     if (!solatTimes) {
