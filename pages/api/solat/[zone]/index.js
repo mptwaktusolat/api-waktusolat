@@ -1,6 +1,4 @@
-import path from 'path';
-import { promises as fs } from 'fs';
-import {loadWaktuSolat} from "../../../lib/load-json-db";
+import {loadWaktuSolat} from "../../../../lib/load-json-db";
 
 export default async function handler(req, res) {
     const { zone } = req.query
