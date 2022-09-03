@@ -1,14 +1,28 @@
-import {useState} from 'react';
-import styles from "../styles/Home.module.css";
+import Head from 'next/head'
+import useSWR from 'swr';
+import styles from "../styles/Locations.module.css";
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
-export default function Locations(props) {
-  const [copySuccess, setCopySuccess] = useState(null);
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function Locations() {
+  const { data, error } = useSWR('/api/zones', fetcher);
+
   const copyToClipBoard = async copyMe => {
     try {
       await navigator.clipboard.writeText(copyMe);
-      setCopySuccess('Copied!');
+      Toastify({
+        text: "Copied",
+        duration: 1000,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        style: {
+          background: "linear-gradient(to right, #457fca, #5691c8)",
+        },
+      }).showToast();
     } catch (err) {
-      setCopySuccess('Failed to copy!');
+      console.log('Copy failed', err);
     }
   };
 
@@ -19,12 +33,22 @@ export default function Locations(props) {
     }, {});
   }
 
-  const zones = groupBy(props.zones, 'negeri');
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
+  const zones = groupBy(data, 'negeri');
   return (
       <div className={styles.container}>
-        <h2 className={styles.description}>
-          All locations. Based on JAKIM.
-        </h2>
+        <Head>
+          <title>Locations - MPT Server</title>
+          <meta name="description" content="JAKIM zones list"/>
+          <link rel="icon" href="/favicon.ico"/>
+        </Head>
+
+        <div className={styles.description}>
+        <h2>All locations. Based on JAKIM.</h2>
+          <h5>Also available in <a href="/api/zones">JSON</a> format</h5>
+        </div>
         {
           Object.entries(zones).map(([negeri, data]) => (
               <div key={negeri} style={{paddingBottom: 15 + 'px'}}>
@@ -32,26 +56,14 @@ export default function Locations(props) {
                 {
                   data.map(zone => (
                           <div key={zone.jakimCode}>
-                            <code onClick={(e) => copyToClipBoard(zone.jakimCode)}>{zone.jakimCode}</code> - {zone.daerah}
+                            <code className={styles.zonecode} onClick={() => copyToClipBoard(zone.jakimCode)}>{zone.jakimCode}</code> - {zone.daerah}
                           </div>
                       )
                   )
                 }
-
               </div>
           ))
         }
       </div>
   );
-
-}
-
-import {loadZones} from "../lib/load-json-db";
-
-export async function getStaticProps() {
-  const zones = await loadZones();
-
-  return {
-    props: {zones}
-  }
 }
