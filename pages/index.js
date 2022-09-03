@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from "next/link";
 import useSWR from 'swr';
 import styles from '../styles/Home.module.css'
 
@@ -52,9 +53,9 @@ export default function Home() {
               <h3>Usage</h3>
               <code className={styles.code}>GET</code>
               <br/>
-              <code>https://mpt-server.vercel.app/api/solat/[locationCode]</code>
+              <code>https://mpt-server.vercel.app/api/solat/[zoneCode]</code>
               <br/><br/>
-              View all location codes <a href="locations">here</a>
+                View all zone codes <Link href="locations"><a>here</a></Link>.
             </div>
 
             <div className={styles.textContent}>

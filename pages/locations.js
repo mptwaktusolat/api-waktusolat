@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import Link from "next/link";
 import useSWR from 'swr';
-import styles from "../styles/Locations.module.css";
 import Toastify from 'toastify-js'
+import styles from "../styles/Locations.module.css";
 import "toastify-js/src/toastify.css"
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -47,7 +48,7 @@ export default function Locations() {
 
         <div className={styles.description}>
         <h2>All locations. Based on JAKIM.</h2>
-          <h5>Also available in <a href="/api/zones">JSON</a> format</h5>
+          <h5>Also available in <Link href="/api/zones"><a>JSON</a></Link> format</h5>
         </div>
         {
           Object.entries(zones).map(([negeri, data]) => (
