@@ -1,11 +1,19 @@
 import Head from 'next/head'
+import useSWR from 'swr';
 import styles from '../styles/Home.module.css'
 
-export default function Home(props) {
-  const log = props;
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function Home() {
+  const { data, error } = useSWR('/api/log', fetcher);
+
   const d = new Date();
   const month = d.getMonth() + 1; // month in value 0 to 11
   const year = d.getFullYear();
+
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
 
   return (
       <div className={styles.container}>
@@ -33,8 +41,9 @@ export default function Home(props) {
             <div className={styles.textContent}>
               <h3>Data healthiness</h3>
 
-              <b>Latest fetch:</b> {log.fetcher_last_run}
-              {log.valid_month == month && log.valid_year == year ? <span
+              <b>Latest fetch:</b> {data.fetcher_last_run}
+              <br/>
+              {data.valid_month === month && data.valid_year === year ? <span
                   className="badge bg-success">Healthy</span> : <span
                   className="badge bg-warning text-dark">Unuseable</span>}
             </div>
@@ -60,16 +69,19 @@ export default function Home(props) {
           </div>
 
           <div className={styles.grid}>
-            <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia"
+            <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia" target="_blank"
+               rel="noopener noreferrer"
                className={styles.card}>
               <p>Download MPT app &rarr;</p>
             </a>
 
-            <a href="https://waktusolat.iqfareez.com" className={styles.card}>
+            <a href="https://waktusolat.iqfareez.com" target="_blank"
+               rel="noopener noreferrer" className={styles.card}>
               <p>Go to MPT Website &rarr;</p>
             </a>
 
-            <a href="https://github.com/iqfareez/mpt-server" className={styles.card}>
+            <a href="https://github.com/iqfareez/mpt-server" target="_blank"
+               rel="noopener noreferrer" className={styles.card}>
               <p>GitHub &rarr;</p>
             </a>
 
@@ -86,14 +98,4 @@ export default function Home(props) {
         </footer>
       </div>
   )
-}
-
-import {loadLog} from "../lib/load-json-db";
-
-export async function getStaticProps() {
-  const log = await loadLog();
-
-  return {
-    props: log
-  }
 }
