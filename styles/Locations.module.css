@@ -17,8 +17,13 @@
 .zonecode {
     font-size: 1rem;
     padding: 4px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
-
 
 .zonecode:hover {
     background-color: rgba(243, 21, 147, 0.04);
