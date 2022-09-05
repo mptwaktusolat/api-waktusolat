@@ -36,3 +36,16 @@ flowchart TD
 ```
 
 View the fetcher implementation [here](./fetcher).
+
+### API endpoints
+
+#### Public usage
+
+* **`GET`** `/api/solat` - Get the latest prayer time data for the current month for all location
+* **`GET`** `/api/solat/locationCode` - Get the latest prayer time data for the current month for the given location. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+* **`GET`** `/api/zones` - Get all the zones with Jakim code, daerah & negeri for all location.
+* **`GET`** `/api/zones/locationCode` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Same like above but will return only for thr supplied zone.
+* **`GET`** `/api/mosque/locationCode` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+
+#### Internal usage
+* **`POST`** `/api/feedback`
