@@ -5,6 +5,10 @@ import { randomUUID } from 'crypto';
 /* POST feedback. */
 export default async function handler(req, res) {
 
+    if (!req.body){
+        return res.status(400).send('No data received');
+    }
+
     const firebaseConfig = {
         apiKey: "AIzaSyABU2oLGpbQOlaaQ-6joJDBevJ4iyfu-6k",
         authDomain: "malaysia-waktu-solat.firebaseapp.com",
