@@ -37,7 +37,8 @@ export default function Locations() {
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
-  const zones = groupBy(data, 'negeri');
+  const zones: Map<String, any> = groupBy(data, 'negeri');
+
   return (
       <div className={styles.container}>
         <Head>

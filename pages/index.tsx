@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head"
 import Link from "next/link";
 import useSWR from 'swr';
 import styles from '../styles/Home.module.css'
