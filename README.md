@@ -1,7 +1,7 @@
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
-A helper server for [Malaysia Prayer Time](https://github.com/iqfareez/app_waktu_solat_malaysia) app. Provide prayer data and feedback submission endpoint.
+A helper server for [Malaysia Prayer Time](https://github.com/iqfareez/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work/
 
 ## Getting Started
 
@@ -11,7 +11,13 @@ First, install the dependencies:
 yarn install
 ```
 
-First, run the development server:
+(Optional) Get the Web API key from Firebase Console. Create a `.env.local` file and add the following:
+
+```.env
+FIREBASE_PROJECT_API_KEY=AIzaXXXXXXXXXXXXXXXXXXX
+```
+
+Run the development server:
 
 ```bash
 yarn dev
@@ -25,7 +31,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 [![Fetch latest data](https://github.com/iqfareez/mpt-server/actions/workflows/fetcher.yml/badge.svg)](https://github.com/iqfareez/mpt-server/actions/workflows/fetcher.yml)
 
-The data is updated every month using GitHub action. The overall flow is depicted in the diagram below.
+The data is updated automatically every month using GitHub Action. The overall flow is depicted in the diagram below.
 
 ```mermaid
 flowchart TD
@@ -42,10 +48,10 @@ View the fetcher implementation [here](./fetcher).
 #### Public usage
 
 * **`GET`** `/api/solat` - Get the latest prayer time data for the current month for all location
-* **`GET`** `/api/solat/locationCode` - Get the latest prayer time data for the current month for the given location. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+* **`GET`** `/api/solat/{locationCode}` - Get the latest prayer time data for the current month for the given location. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
 * **`GET`** `/api/zones` - Get all the zones with Jakim code, daerah & negeri for all location.
-* **`GET`** `/api/zones/locationCode` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Same like above but will return only for thr supplied zone.
-* **`GET`** `/api/mosque/locationCode` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+* **`GET`** `/api/zones/{locationCode}` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Return zones **only** for the supplied zone.
+* **`GET`** `/api/mosque/{locationCode}` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
 
 #### Internal usage
 * **`POST`** `/api/feedback`
