@@ -56,9 +56,10 @@ export default async function handler(req, res) {
         ...req.body
     }
 
+    let path = process.env.NODE_ENV === 'production' ? 'reports' : 'reports-dev';
+
     try {
-        const docRef = doc(collection(db, "tests"), feedbackId);
-        // const docRef = doc(collection(db, "reports"), feedbackId);
+        const docRef = doc(collection(db, path), feedbackId);
         await setDoc(docRef, payload);
         res.status(200).json({ 'result': 'success', 'id': docRef.id, payload: payload });
     } catch (e) {
