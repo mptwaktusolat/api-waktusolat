@@ -5,12 +5,13 @@ import { randomUUID } from 'crypto';
 /* POST feedback. */
 export default async function handler(req, res) {
 
-    if (!req.body){
+    if (!req.body || Object.keys(req.body).length === 0) {
+        // check is body is undefined or empty body "{}"
         return res.status(400).send('No data received');
     }
 
     const firebaseConfig = {
-        apiKey: "AIzaSyABU2oLGpbQOlaaQ-6joJDBevJ4iyfu-6k",
+        apiKey: process.env.FIREBASE_API_KEY,
         authDomain: "malaysia-waktu-solat.firebaseapp.com",
         databaseURL: "https://malaysia-waktu-solat.firebaseio.com",
         projectId: "malaysia-waktu-solat",
@@ -56,13 +57,13 @@ export default async function handler(req, res) {
     }
 
     try {
-        // const docRef = await addDoc(collection(db, "tests"), payload);
-        const docRef = doc(collection(db, "reports"), feedbackId);
+        const docRef = doc(collection(db, "tests"), feedbackId);
+        // const docRef = doc(collection(db, "reports"), feedbackId);
         await setDoc(docRef, payload);
-        res.json({ 'result': 'success', 'id': docRef.id, payload: payload });
+        res.status(200).json({ 'result': 'success', 'id': docRef.id, payload: payload });
     } catch (e) {
         console.log(e);
-        res.json({ 'result': 'failed', 'error': e });
+        res.status(500).json({ 'result': 'failed', 'error': e });
     }
 }
 
