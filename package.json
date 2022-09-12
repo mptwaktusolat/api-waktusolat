@@ -17,6 +17,9 @@
     "swr": "^1.3.0",
     "toastify-js": "^1.12.0"
   },
+  "stackblitz": {
+    "startCommand": "yarn install && yarn dev"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
