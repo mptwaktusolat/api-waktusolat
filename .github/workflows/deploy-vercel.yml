@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
-      - run: yarn test
+      - run: yarn test --detectOpenHandles
       - run: yarn build
       - uses: amondnet/vercel-action@v25 #deploy
         with:
