@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npx vercel --prod --token ${{ env.VERCEL_TOKEN }} >> $GITHUB_STEP_SUMMARY
+      - run: npx vercel --token ${{ env.VERCEL_TOKEN }} >> $GITHUB_STEP_SUMMARY
 
