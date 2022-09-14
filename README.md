@@ -1,7 +1,7 @@
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
-A helper server for [Malaysia Prayer Time](https://github.com/iqfareez/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work/
+A helper server for [Malaysia Prayer Time](https://github.com/mptwaktusolat/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work/
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## How are the prayer time data is updated every month?
 
-[![Fetch latest data](https://github.com/iqfareez/mpt-server/actions/workflows/fetcher.yml/badge.svg)](https://github.com/iqfareez/mpt-server/actions/workflows/fetcher.yml)
+[![Fetch latest data](https://github.com/mptwaktusolat/mpt-server/actions/workflows/fetcher.yml/badge.svg)](https://github.com/mptwaktusolat/mpt-server/actions/workflows/fetcher.yml)
 
 The data is updated automatically every month using GitHub Action. The overall flow is depicted in the diagram below.
 
@@ -42,6 +42,11 @@ flowchart TD
 ```
 
 View the fetcher implementation [here](./fetcher).
+
+### Deployment status
+
+[![deploy live website](https://github.com/mptwaktusolat/mpt-server/actions/workflows/vercel-prod.yml/badge.svg)](https://github.com/mptwaktusolat/mpt-server/actions/workflows/vercel-prod.yml)
+[![deploy preview website on branches](https://github.com/mptwaktusolat/mpt-server/actions/workflows/vercel-preview.yml/badge.svg)](https://github.com/mptwaktusolat/mpt-server/actions/workflows/vercel-preview.yml)
 
 ### API endpoints
 
