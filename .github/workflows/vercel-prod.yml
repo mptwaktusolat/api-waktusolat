@@ -1,5 +1,6 @@
 name: deploy live website
 on:
+  workflow_dispatch: # manual trigger
   push:
     branches:
       - master

@@ -1,5 +1,6 @@
 name: deploy preview website on branches
 on:
+  workflow_dispatch: # manual trigger
   push:
     branches-ignore:
       - master
