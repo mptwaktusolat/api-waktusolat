@@ -38,11 +38,11 @@ jobs:
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MY_GH_PAT }}
           branch: main
 
       - name: telegram notify
-        uses: fjogeleit/http-request-action@v1.8.1
+        uses: fjogeleit/http-request-action@v1.11.1
         with:
           url: 'https://api.telegram.org/bot${{secrets.TELE_BOT_API_KEY}}/sendMessage'
           method: 'POST'
