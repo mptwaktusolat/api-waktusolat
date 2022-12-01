@@ -54,6 +54,7 @@ View the fetcher implementation [here](./fetcher).
 
 * **`GET`** `/api/solat` - Get the latest prayer time data for the current month for all location
 * **`GET`** `/api/solat/{locationCode}` - Get the latest prayer time data for the current month for the given location. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+* **`GET`** `/api/solat/{locationCode}/{day}` - Same as above, but you can filter for only a day (1-31)
 * **`GET`** `/api/zones` - Get all the zones with Jakim code, daerah & negeri for all location.
 * **`GET`** `/api/zones/{locationCode}` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Return zones **only** for the supplied zone.
 * **`GET`** `/api/mosque/{locationCode}` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
