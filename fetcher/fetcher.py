@@ -54,7 +54,9 @@ while len(jakim_code) != 0:
             data['solat'].append(json_response)
             jakim_code.remove(zone)
         else:
-            print(f'{zone} : Failed ({response.status_code})')
+            print(
+                f'{zone} : Failed ({response.status_code}) - {json_response["status"]}'
+            )
 
         # Pause 1.5 secs before the next api call
         # to prevent 'ddos' to their server
