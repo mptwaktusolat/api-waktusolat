@@ -1,6 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 
+export const config = {
+  runtime: 'edge',
+  regions: ['sin1'], //Singapore - AWS ap-southeast-1
+}
+
 export default async function handler(req, res) {
 
   let {zone} = req.query
@@ -22,6 +27,6 @@ export default async function handler(req, res) {
 
   // return the mosque image times data in JSON
   res.setHeader('Content-Type', 'image/jpg')
-  res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
+  res.setHeader('Cache-Control', 'max-age=0, s-maxage=5184000'); // 60 days
   res.status(200).send(imageBuffer);
 }

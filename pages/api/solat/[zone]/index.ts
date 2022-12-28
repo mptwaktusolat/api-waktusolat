@@ -1,5 +1,10 @@
 import {loadWaktuSolat} from "../../../../lib/load-json-db";
 
+export const config = {
+    runtime: 'edge',
+    regions: ['sin1'], //Singapore - AWS ap-southeast-1
+}
+
 export default async function handler(req, res) {
     const { zone } = req.query
 
