@@ -1,6 +1,7 @@
-name: deploy preview website on branches
+name: 'Deploy (Preview)'
 on:
   workflow_dispatch: # manual trigger
+  pull_request:
   push:
     branches-ignore:
       - master

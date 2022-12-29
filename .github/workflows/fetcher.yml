@@ -1,4 +1,4 @@
-name: 'Fetch latest data'
+name: 'Fetch latest data and deploy'
 
 on:
   workflow_dispatch:
@@ -38,11 +38,29 @@ jobs:
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.MY_GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
 
-      - name: telegram notify
-        uses: fjogeleit/http-request-action@v1.12.0
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 16
+      - run: npx vercel --prod --token ${{ env.VERCEL_TOKEN }} >> $GITHUB_STEP_SUMMARY
+
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fjogeleit/http-request-action@v1.12.0
         with:
           url: 'https://api.telegram.org/bot${{secrets.TELE_BOT_API_KEY}}/sendMessage'
           method: 'POST'
