@@ -1,10 +1,5 @@
 import {loadZones} from "../../../lib/load-json-db";
 
-export const config = {
-  runtime: 'edge',
-  regions: ['sin1'], //Singapore - AWS ap-southeast-1
-}
-
 export default async function handler(req, res) {
   // https://vercel.com/guides/loading-static-file-nextjs-api-route
   const zones = await loadZones();

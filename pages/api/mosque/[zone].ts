@@ -1,11 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 
-export const config = {
-  runtime: 'edge',
-  regions: ['sin1'], //Singapore - AWS ap-southeast-1
-}
-
 export default async function handler(req, res) {
 
   let {zone} = req.query
