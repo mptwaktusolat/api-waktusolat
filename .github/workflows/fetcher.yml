@@ -49,12 +49,21 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout Repo content
+        uses: actions/checkout@v3
+        # https://github.com/actions/checkout/issues/439#issuecomment-965968956
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           node-version: 16
-      - run: npx vercel --prod --token ${{ env.VERCEL_TOKEN }} >> $GITHUB_STEP_SUMMARY
+
+      - name: Deploy to Vercel (prod)
+        run: npx vercel --prod --token ${{ env.VERCEL_TOKEN }} >> $GITHUB_STEP_SUMMARY
 
   notify:
     needs: deploy
@@ -68,5 +77,5 @@ jobs:
             "chat_id": -1001220707105,
             "parse_mode": "MarkdownV2",
             "disable_web_page_preview": true,
-            "text": "${{github.workflow}} *completed* \uD83C\uDF89 Latest data updated\\. Triggered by `${{github.event_name}}`\\. View [mpt-server](https:\/\/mpt-server.vercel.app/) or [action runs](https:\/\/github.com\/${{github.repository}}\/actions\/runs\/${{github.run_id}})\\."
+            "text": "${{github.workflow}} *completed* \uD83C\uDF89 Latest data updated\\. Triggered by `${{github.event_name}}`\\. View [mpt\\-server](https:\/\/mpt-server.vercel.app/) or [action runs](https:\/\/github.com\/${{github.repository}}\/actions\/runs\/${{github.run_id}})\\."
             }'
