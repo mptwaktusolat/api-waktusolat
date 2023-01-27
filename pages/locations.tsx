@@ -67,13 +67,7 @@ export default function Locations() {
                     </div>
                 ))
             }
-            <footer>
-                <sub>Note: As of November 2022, JAKIM seems to have replaced <code>KTN03</code> with <code>KTN02</code>.
-                    View issue <a href="https://github.com/mptwaktusolat/app_waktu_solat_malaysia/issues/160"
-                                  target={"_blank"} rel="noreferrer">#160</a>.
 
-                </sub>
-            </footer>
             <div style={{paddingBottom: "5rem"}}></div>
         </div>
     );
