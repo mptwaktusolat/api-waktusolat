@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   const {code} = req.query;
 
-  const filteredZones = zones.filter(zone => zone.jakimCode.toLowerCase().includes(code));
+  const filteredZones = zones.filter(zone => zone.jakimCode.toLowerCase().includes(code.toLowerCase()));
 
   if (!filteredZones.length) {
     res.status(404).json({
