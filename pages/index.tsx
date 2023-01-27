@@ -64,6 +64,9 @@ export default function Home() {
               <a>here</a>
             </Link>
             .
+            <div style={{paddingTop: "8px"}}>
+              <a href="https://insomnia.rest/run/?label=mpt-server%20APIs&uri=htps%3A%2F%2Fgithub.com%2Fmptwaktusolat%2Fmpt-server-insomnia%2Fblob%2Fmain%2FInsomnia_2023-01-27.json" target="_blank" rel={'noopener noreferrer'}><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"/></a>
+            </div>
           </div>
 
           <div className={styles.textContent}>
@@ -79,8 +82,6 @@ export default function Home() {
         <div className={styles.grid}>
           <a
             href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia"
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.card}
           >
             <p>Download MPT app &rarr;</p>
@@ -88,8 +89,6 @@ export default function Home() {
 
           <a
             href="https://waktusolat.iqfareez.com"
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.card}
           >
             <p>Go to MPT Website &rarr;</p>
@@ -97,8 +96,6 @@ export default function Home() {
 
           <a
             href="https://github.com/iqfareez/mpt-server"
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.card}
           >
             <p>GitHub &rarr;</p>
@@ -108,8 +105,6 @@ export default function Home() {
       <footer className={styles.footer}>
         <a
           href="https://iqfareez.com"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Muhammad Fareez Iqmal
         </a>
