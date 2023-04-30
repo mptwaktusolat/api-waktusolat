@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.0",
     "bootstrap": "^5.2.0",
     "firebase": "^9.9.3",
     "next": "12.2.5",
