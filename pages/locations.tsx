@@ -35,9 +35,8 @@ export default function Locations() {
     }
 
     if (error) return <div>Failed to load</div>;
-    if (!data) return <div>Loading...</div>;
 
-    const zones: Map<String, any> = groupBy(data, 'negeri');
+    const zones: Map<String, any> = groupBy(data ?? [], 'negeri');
 
     return (
         <div className={styles.container}>
@@ -49,20 +48,23 @@ export default function Locations() {
 
             <div className={styles.description}>
                 <h2>All locations. Based on JAKIM.</h2>
-                <h5>Also available in <Link href="/api/zones"><a>JSON</a></Link> format</h5>
+                <h5>Also available in <Link href="/api/zones">JSON</Link> format</h5>
             </div>
             {
                 Object.entries(zones).map(([negeri, data]) => (
                     <div key={negeri} style={{paddingBottom: 15 + 'px'}}>
                         <h3>{negeri}</h3>
-                        {
+                        { data ? (
                             data.map(zone => (
-                                    <div key={zone.jakimCode}>
-                                        <code className={styles.zonecode}
-                                              onClick={() => copyToClipBoard(zone.jakimCode)}>{zone.jakimCode}</code> - {zone.daerah}
-                                    </div>
-                                )
-                            )
+                                <div key={zone.jakimCode}>
+                                    <code className={styles.zonecode} onClick={() => copyToClipBoard(zone.jakimCode)}>
+                                        {zone.jakimCode}
+                                    </code> - {zone.daerah}
+                                </div>
+                            ))
+                        ) : (
+                            <div>Loading...</div>
+                        )
                         }
                     </div>
                 ))

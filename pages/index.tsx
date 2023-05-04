@@ -13,7 +13,6 @@ export default function Home() {
   const year = d.getFullYear();
 
   if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
 
   return (
     <div className={styles.container}>
@@ -41,16 +40,16 @@ export default function Home() {
             intervals. Fetcher is scheduled to run (typically) at 8.00 am on the
             first day of the month.
           </p>
-          <div className={styles.textContent}>
+          { data ? <div className={styles.textContent}>
             <h3>Data healthiness</h3>
             <b>Latest fetch:</b> {data.fetcher_last_run}
-            <br />
+            <br/>
             {data.valid_month === month && data.valid_year === year ? (
-              <span className="badge bg-success">Healthy</span>
+                <span className="badge bg-success">Healthy</span>
             ) : (
-              <span className="badge bg-warning text-dark">Unuseable</span>
+                <span className="badge bg-warning text-dark">Unuseable</span>
             )}
-          </div>
+          </div> : <div>Loading...</div>}
 
           <div className={styles.textContent}>
             <h3>Usage</h3>
@@ -60,10 +59,7 @@ export default function Home() {
             <br />
             <br />
             View all zone codes{' '}
-            <Link href="locations">
-              <a>here</a>
-            </Link>
-            .
+            <Link href="locations">here</Link>.
             <div style={{paddingTop: "8px"}}>
               <a href="https://insomnia.rest/run/?label=mpt-server%20APIs&uri=htps%3A%2F%2Fgithub.com%2Fmptwaktusolat%2Fmpt-server-insomnia%2Fblob%2Fmain%2FInsomnia_2023-01-27.json" target="_blank" rel={'noopener noreferrer'}><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"/></a>
             </div>
