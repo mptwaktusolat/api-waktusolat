@@ -21,10 +21,10 @@ export default async function handler(req, res) {
         measurementId: "G-8K4GZ6RK8R"
     };
 
-// Initialize Firebase
+    // Initialize Firebase
     const firebaseApp = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
+    // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(firebaseApp);
 
     const uuid = randomUUID();
