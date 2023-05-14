@@ -4,7 +4,14 @@ import {collection, doc, getDoc, getDocs, getFirestore, Timestamp} from "firebas
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const {zone, year, month} = req.query;
-    console.log(zone, year, month);
+
+    if (year === undefined) {
+        // check is body is undefined or empty body "{}"
+        return res.status(400).send({
+            message: "Please specify parameter 'year'"
+        });
+    }
+
     const firebaseConfig = {
         apiKey: process.env.FIREBASE_API_KEY,
         authDomain: "malaysia-waktu-solat.firebaseapp.com",
@@ -29,17 +36,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     // check month if an integer
-    let monthName;
-    if (!isNaN(parseInt(month.toString()))) {
-        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-        const monthInt = parseInt(month.toString());
-        monthName = monthNames[monthInt - 1];
+    let fetch_for_month;
+    if (month === undefined) {
+        fetch_for_month = currentMonth;
+    } else {
+
+        try {
+            const monthNumber = parseInt(month.toString());
+
+            // check if month is within 1-12
+            if (monthNumber < 1 || monthNumber > 12) throw new Error(`Invalid month: ${month.toString()}. Please specify month between 1-12`)
+
+            if (isNaN(monthNumber)) throw new Error(`Invalid month: ${month.toString()}`)
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            fetch_for_month = monthNames[monthNumber - 1];
+
+        } catch (e) {
+            return res.status(400).json({
+                error: `${e.message}`
+            });
+        }
     }
 
     const fetch_for_year = year || currentYear;
-    const fetch_for_month = monthName !== undefined && monthName !== null ?
-        monthName : (month !== undefined && month !== null ?
-            month : currentMonth);
+
 
     // load db collection
     const monthCollectionRef = collection(db, `waktusolat/${fetch_for_year}/${fetch_for_month}`);
@@ -54,7 +74,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!docSnapshot.exists()) {
         console.log("Document does not exist!");
         res.status(404).json({
-            error: `No zone found for code: ${zone}`
+            error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${fetch_for_year} `
         });
         return;
     }
@@ -63,7 +83,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // build response
     let response = {};
-    response['zone'] = zone;
+    response['zone'] = zone.toString().toUpperCase()
     response['year'] = currentYear;
     response['month'] = fetch_for_month;
 
@@ -72,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const yearDocRef = doc(rootCollection, fetch_for_year.toString());
     const yearDocData = await getDoc(yearDocRef);
     const lastFetchTimestamp: Timestamp = yearDocData.data().last_updated[fetch_for_month];
-    response['last_updated'] = lastFetchTimestamp.toDate().toLocaleDateString();
+    response['last_updated'] = lastFetchTimestamp.toDate();
 
     // lastly, assign the prayer time data
     response['prayers'] = documentData.prayerTime;
