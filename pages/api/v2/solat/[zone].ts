@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // check month if an integer
     let fetch_for_month;
     if (month === undefined) {
-        fetch_for_month = currentMonth;
+        fetch_for_month = currentMonth.toUpperCase();
     } else {
 
         try {
@@ -60,6 +60,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const fetch_for_year = year || currentYear;
 
+    console.log(`waktusolat/${fetch_for_year}/${fetch_for_month}`)
+
 
     // load db collection
     const monthCollectionRef = collection(db, `waktusolat/${fetch_for_year}/${fetch_for_month}`);
@@ -74,7 +76,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!docSnapshot.exists()) {
         console.log("Document does not exist!");
         res.status(404).json({
-            error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${fetch_for_year} `
+            error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${fetch_for_year}`
         });
         return;
     }
