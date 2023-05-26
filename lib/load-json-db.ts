@@ -18,3 +18,10 @@ export async function loadZones() {
   const jsonData = await fsPromises.readFile(filePath, 'utf-8');
   return JSON.parse(jsonData);
 }
+
+export async function loadZonesGeoJson() {
+  // Source of GeoJson: https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-malaysia/resource/55b3dd6f-5786-4dce-b32f-5eca9bc8c16d
+  const filePath = path.join(process.cwd(), 'json/geoBoundaries-MYS-ADM1_simplified.geojson');
+  const jsonData = await fsPromises.readFile(filePath, 'utf-8');
+  return JSON.parse(jsonData);
+}

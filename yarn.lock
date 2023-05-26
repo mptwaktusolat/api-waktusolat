@@ -5249,7 +5249,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15":
+"lodash@npm:^4.14.2, lodash@npm:^4.17.15":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -5568,6 +5568,7 @@ __metadata:
     jest-environment-jsdom: ^29.0.2
     next: latest
     node-mocks-http: ^1.11.0
+    polygon-lookup: ^2.6.0
     react: latest
     react-dom: latest
     swr: ^1.3.0
@@ -6122,6 +6123,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"point-in-polygon@npm:1.0.1":
+  version: 1.0.1
+  resolution: "point-in-polygon@npm:1.0.1"
+  checksum: 7e98bc76d61627ea3b3e1c6343406118aaa1c4b04585fcd5a3d308c0930f33b64b26fd51f61eba3bf8fbb3fc9e2f3d7498cc90af4818aaad19ffdd6c949c4c71
+  languageName: node
+  linkType: hard
+
+"polygon-lookup@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "polygon-lookup@npm:2.6.0"
+  dependencies:
+    lodash: ^4.14.2
+    point-in-polygon: 1.0.1
+    rbush: ^2.0.2
+  checksum: 96257cf3f48b953666a676fd3e57cfa84af938dd1c0ded74ed0746c54acc981ae103bfa82d8233b780aad95cf1efb4d06330d67996efeb3a1f8c6ca77eb3198e
+  languageName: node
+  linkType: hard
+
 "postcss@npm:8.4.14":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
@@ -6286,10 +6305,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"quickselect@npm:^1.0.1":
+  version: 1.1.1
+  resolution: "quickselect@npm:1.1.1"
+  checksum: 419c88a1fbd57d66365be9498e694c6fbd10bfabe8910fedfa3f75c008c08f9b05d10e4b79f462e7875dd6053431638d7fd66b6a7226ff752d657c82633981e1
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:^1.2.0":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
   checksum: 0a268d4fea508661cf5743dfe3d5f47ce214fd6b7dec1de0da4d669dd4ef3d2144468ebe4179049eff253d9d27e719c88dae55be64f954e80135a0cada804ec9
+  languageName: node
+  linkType: hard
+
+"rbush@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "rbush@npm:2.0.2"
+  dependencies:
+    quickselect: ^1.0.1
+  checksum: 43fd4a47e095ef68ab3e658872e821f7ef1376e98c70ba3f83fa1d3c3ecaf5192756073c18f5c6b46d171f1d2a737d88ef2200fcf56b0f77e5431357efa0c1db
   languageName: node
   linkType: hard
 

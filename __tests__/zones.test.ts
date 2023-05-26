@@ -1,6 +1,7 @@
 import {createMocks} from 'node-mocks-http';
 import zones from '../pages/api/zones';
 import zonesCode from '../pages/api/zones/[code]';
+import zonesFromCoordinates from '../pages/api/zones/fromCoordinates';
 import {describe, expect, test} from '@jest/globals';
 
 describe('/api/zones', () => {
@@ -75,5 +76,41 @@ describe('/api/zones/{code}', () => {
         await zonesCode(req, res);
 
         expect(res._getStatusCode()).toBe(404);
+    });
+});
+
+describe('/api/zones/fromCoordinates', () => {
+    test('Get zones by coordinates', async () => {
+        const {req, res} = createMocks({
+            method: 'GET',
+            query: {
+                lat: '3.0738',
+                lang: '101.5183'
+            }
+        });
+
+        await zonesFromCoordinates(req, res);
+
+        expect(res._getStatusCode()).toBe(200);
+        expect(res._getJSONData()).toEqual(expect.objectContaining({
+            negeri: expect.stringMatching("Selangor"),
+        }))
+    });
+
+    test('Get zones by invalid coordinates', async () => {
+        const {req, res} = createMocks({
+            method: 'GET',
+            query: {
+                lat: '3.0738',
+                lang: '101.5183'
+            }
+        });
+
+        await zonesFromCoordinates(req, res);
+
+        expect(res._getStatusCode()).toBe(200);
+        expect(res._getJSONData()).toEqual(expect.objectContaining({
+            negeri: expect.stringMatching("Selangor"),
+        }))
     });
 });

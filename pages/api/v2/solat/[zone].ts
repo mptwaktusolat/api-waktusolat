@@ -74,7 +74,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // check if document exists
     if (!docSnapshot.exists()) {
-        console.log("Document does not exist!");
         res.status(404).json({
             error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${fetch_for_year}`
         });
