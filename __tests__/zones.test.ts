@@ -1,7 +1,7 @@
 import {createMocks} from 'node-mocks-http';
 import zones from '../pages/api/zones';
 import zonesCode from '../pages/api/zones/[code]';
-import zonesFromCoordinates from '../pages/api/zones/fromCoordinates';
+import zonesFromCoordinates from '../pages/api/zones/gps';
 import {describe, expect, test} from '@jest/globals';
 
 describe('/api/zones', () => {
@@ -79,8 +79,8 @@ describe('/api/zones/{code}', () => {
     });
 });
 
-describe('/api/zones/fromCoordinates', () => {
-    test('Get zones by coordinates', async () => {
+describe('/api/zones/gps', () => {
+    test('Get zones by GPS coordinates', async () => {
         const {req, res} = createMocks({
             method: 'GET',
             query: {
@@ -93,8 +93,10 @@ describe('/api/zones/fromCoordinates', () => {
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual(expect.objectContaining({
-            negeri: expect.stringMatching("Selangor"),
-        }))
+            state: "Selangor",
+            state_iso: "MY-10",
+            zone: "SGR01",
+        }));
     });
 
     test('Get zones by invalid coordinates', async () => {
@@ -110,7 +112,9 @@ describe('/api/zones/fromCoordinates', () => {
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual(expect.objectContaining({
-            negeri: expect.stringMatching("Selangor"),
-        }))
+            state: "Selangor",
+            state_iso: "MY-10",
+            zone: "SGR01",
+        }));
     });
 });
