@@ -84,10 +84,10 @@ export default function Home() {
           </a>
 
           <a
-            href="https://waktusolat.iqfareez.com"
+            href="https://mywaktusolat.vercel.app/api"
             className={styles.card}
           >
-            <p>Go to MPT Website &rarr;</p>
+            <p>Docs &rarr;</p>
           </a>
 
           <a
