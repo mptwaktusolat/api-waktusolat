@@ -1,19 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import useSWR from 'swr';
 import styles from '../styles/Home.module.css';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
 export default function Home() {
-  const { data, error } = useSWR('/api/log', fetcher);
-
-  const d = new Date();
-  const month = d.getMonth() + 1; // month in value 0 to 11
-  const year = d.getFullYear();
-
-  if (error) return <div>Failed to load</div>;
-
   return (
     <div className={styles.container}>
       <Head>
@@ -35,44 +23,7 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <p className={styles.textContent}>
-            Prayer times data will be refresh from JAKIM's server at monthly
-            intervals. Fetcher is scheduled to run (typically) at 8.00 am on the
-            first day of the month.
-          </p>
-          { data ? <div className={styles.textContent}>
-            <h3>Data healthiness</h3>
-            <b>Latest fetch:</b> {data.fetcher_last_run}
-            <br/>
-            {data.valid_month === month && data.valid_year === year ? (
-                <span className="badge bg-success">Healthy</span>
-            ) : (
-                <span className="badge bg-warning text-dark">Unuseable</span>
-            )}
-          </div> : <div>Loading...</div>}
 
-          <div className={styles.textContent}>
-            <h3>Usage</h3>
-            <code className={styles.code}>GET</code>
-            <br />
-            <code>https://mpt-server.vercel.app/api/solat/[zoneCode]</code>
-            <br />
-            <br />
-            View all zone codes{' '}
-            <Link href="locations">here</Link>.
-            <div style={{paddingTop: "8px"}}>
-              <a href="https://insomnia.rest/run/?label=mpt-server%20APIs&uri=htps%3A%2F%2Fgithub.com%2Fmptwaktusolat%2Fmpt-server-insomnia%2Fblob%2Fmain%2FInsomnia_2023-01-27.json" target="_blank" rel={'noopener noreferrer'}><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"/></a>
-            </div>
-          </div>
-
-          <div className={styles.textContent}>
-            <h3>Disclaimer</h3>
-            <p>
-              This API was not meant for public use. It is designed for the{' '}
-              <b>Malaysia Prayer Time app</b>. However, there is no harm in
-              using them in small/medium applications. Happy coding!
-            </p>
-          </div>
         </div>
 
         <div className={styles.grid}>
