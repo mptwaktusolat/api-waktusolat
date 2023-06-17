@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // get current year & month (by its name)
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().toLocaleString('en-MY', {
-        month: 'long'
+        month: 'short'
     });
 
     // check month if an integer
@@ -61,7 +61,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const fetch_for_year = year || currentYear;
 
     console.log(`waktusolat/${fetch_for_year}/${fetch_for_month}`)
-
 
     // load db collection
     const monthCollectionRef = collection(db, `waktusolat/${fetch_for_year}/${fetch_for_month}`);
