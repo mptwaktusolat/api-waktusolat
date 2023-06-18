@@ -47,8 +47,8 @@ export default function Locations() {
             </Head>
 
             <div className={styles.description}>
-                <h2>All locations. Based on JAKIM.</h2>
-                <h5>Also available in <Link href="/api/zones">JSON</Link> format</h5>
+                <h1>All locations. Based on JAKIM.</h1>
+                <h5>Also available in <Link className={styles.link} href="/api/zones">JSON</Link> format</h5>
             </div>
             {
                 Object.entries(zones).map(([negeri, data]) => (
@@ -70,7 +70,15 @@ export default function Locations() {
                 ))
             }
 
-            <div style={{paddingBottom: "5rem"}}></div>
+            <div style={{paddingBottom: "1rem"}}></div>
+            <div className={styles.footer}>
+                <span>This data is updated on best-effort basis. If you find the data above incorrect/outdated, kindly open an issue <Link
+                    className={styles.link}
+                    href={"https://github.com/mptwaktusolat/jakim-zones-grabber/issues"}>here</Link>.</span>
+
+                <br/>
+                <Link className={styles.link} href={"/"} >Back home</Link>
+            </div>
         </div>
     );
 }

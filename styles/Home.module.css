@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  text-decoration: none;
 }
 
 .title a {
@@ -52,8 +53,8 @@
 }
 
 .description {
-  margin: 4rem 0;
-  line-height: 1.5;
+  margin: 2.5rem 0;
+  line-height: 1.45;
   font-size: 1.5rem;
 }
 
@@ -78,6 +79,28 @@
   text-align: left;
   color: inherit;
   max-width: 400px;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
 }
 
 .card {

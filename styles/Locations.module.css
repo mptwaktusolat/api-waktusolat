@@ -14,6 +14,38 @@
     line-height: 1.5;
 }
 
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    border-top: 1px solid #eaeaea;
+}
+
+
+.link {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
 .zonecode {
     font-size: 1rem;
     padding: 4px;
