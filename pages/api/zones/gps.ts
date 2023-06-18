@@ -1,6 +1,5 @@
-import {loadAzanProZonesJson, loadZonesGeoJson} from "../../../lib/load-json-db";
 import PolygonLookup from 'polygon-lookup';
-import haversine from 'haversine-distance'
+import axios from "axios";
 
 
 export default async function handler(req, res) {
@@ -13,48 +12,39 @@ export default async function handler(req, res) {
         });
     }
 
-    // load geojson from assets
-    const geojson = await loadZonesGeoJson();
+    let geojsonData;
 
-    const lookup = new PolygonLookup(geojson);
-    const result = lookup.search(lang, lat);
-
-    let negeri, matchedZones;
-
+    // fetch geojson
     try {
-        const negeriIsoCode = result.properties.shapeISO;
-
-        // as of now, azanpro covers a lot of points, so I think it is more accurate
-        // compared to jakim zones db
-        const jakimZones = await loadAzanProZonesJson();
-        matchedZones = jakimZones.filter((zone) => zone.state_iso === negeriIsoCode);
-    } catch (e) {
-        return res.status(404).json({
-            error: `No zone found for the supplied coordinates. Are you outside of Malaysia?`
+        geojsonData = await getZonesGeoJson();
+    } catch (error) {
+        return res.status(500).json({
+            error: error.message
         });
     }
 
-    // calculate distance from each zone
-    const distances = matchedZones.map((zone) => {
-        const distance = haversine(
-            {lat: lat, lng: lang},
-            {lat: zone.lat, lng: zone.lang}
-        );
-        return {
-            ...zone,
-            distance
-        }
-    });
+    const lookup = new PolygonLookup(geojsonData);
+    const result = lookup.search(lang, lat);
 
-    // sort by distance
-    distances.sort((a, b) => a.distance - b.distance);
+    try {
+        const jakimCode = result.properties.jakim_code;
+        const state = result.properties.state;
+        const district = result.properties.name;
 
-    // get the nearest zone
-    const nearestZone = distances[0];
+        return res.status(200).json({
+            'zone': jakimCode ?? "N/A",
+            'state': state,
+            'district': district,
+        })
+    } catch (e) {
+        return res.status(404).json({
+            error: `No zone found for the supplied coordinates. Are you outside of Malaysia?`,
+        });
+    }
+}
 
-    return res.status(200).json({
-        'state': nearestZone.negeri,
-        'state_iso': nearestZone.state_iso,
-        'zone': nearestZone.zone,
-    })
+async function getZonesGeoJson() {
+    const geoJsonDataSource = 'https://raw.githubusercontent.com/mptwaktusolat/malaysia.geojson/master/malaysia.district-jakim.geojson';
+    const res = await axios.get(geoJsonDataSource);
+    return res.data;
 }
