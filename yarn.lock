@@ -2335,15 +2335,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.2.0":
-  version: 5.2.3
-  resolution: "bootstrap@npm:5.2.3"
-  peerDependencies:
-    "@popperjs/core": ^2.11.6
-  checksum: 0211805dec6a190c0911d142966df30fdb4b4139a04cc6c23dd83c6045ea3cb0a966b360ab2e701e7b3ad96ff01e05fdc0914be97b41bd876b11e457a8bdc6a3
-  languageName: node
-  linkType: hard
-
 "bplist-parser@npm:^0.2.0":
   version: 0.2.0
   resolution: "bplist-parser@npm:0.2.0"
@@ -5589,7 +5580,6 @@ __metadata:
     "@types/react": ^18.0.18
     "@vercel/analytics": ^1.0.0
     axios: ^1.4.0
-    bootstrap: ^5.2.0
     eslint: 8.23.0
     eslint-config-next: latest
     firebase: ^9.9.3

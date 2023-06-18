@@ -23,11 +23,19 @@
     border-top: 1px solid #eaeaea;
 }
 
+/*.code {*/
+/*    background: #fafafa;*/
+/*    color: #d63384;*/
+/*    border-radius: 5px;*/
+/*    padding: 0.5rem;*/
+/*    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,*/
+/*    Bitstream Vera Sans Mono, Courier New, monospace;*/
+/*}*/
 
 .link {
     position: relative;
     text-decoration: none;
-    color: #000;
+    color: darkblue;
     font-weight: bold;
 }
 
@@ -38,7 +46,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #000;
+    background-color: darkblue;
     transition: width 0.3s ease;
 }
 
@@ -46,8 +54,15 @@
     width: 100%;
 }
 
+.zoneItem {
+    padding-bottom: 6px;
+    font-size: 1.1rem;
+}
+
 .zonecode {
-    font-size: 1rem;
+    font-weight: bold;
+    /*line-height: 3px;*/
+    color: #d63384;
     padding: 4px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -60,4 +75,28 @@
 .zonecode:hover {
     background-color: rgba(243, 21, 147, 0.04);
     cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card,
+    .footer {
+        border-color: #222;
+    }
+
+    .logo img {
+        filter: invert(1);
+    }
+    .link::after {
+        background-color: #ffc;
+    }
+    .link{
+        color: #ffc;
+    }
+    .zonecode {
+
+    }
+    .zonecode:hover {
+        background-color: rgba(214,51,132, 0.2);
+        cursor: pointer;
+    }
 }

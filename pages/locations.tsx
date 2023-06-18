@@ -48,15 +48,15 @@ export default function Locations() {
 
             <div className={styles.description}>
                 <h1>All locations. Based on JAKIM.</h1>
-                <h5>Also available in <Link className={styles.link} href="/api/zones">JSON</Link> format</h5>
+                <h3>Also available in <Link className={styles.link} href="/api/zones">JSON</Link> format</h3>
             </div>
             {
                 Object.entries(zones).map(([negeri, data]) => (
                     <div key={negeri} style={{paddingBottom: 15 + 'px'}}>
-                        <h3>{negeri}</h3>
+                        <h2>{negeri}</h2>
                         { data ? (
                             data.map(zone => (
-                                <div key={zone.jakimCode}>
+                                <div key={zone.jakimCode} className={styles.zoneItem}>
                                     <code className={styles.zonecode} onClick={() => copyToClipBoard(zone.jakimCode)}>
                                         {zone.jakimCode}
                                     </code> - {zone.daerah}

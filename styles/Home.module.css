@@ -79,12 +79,13 @@
   text-align: left;
   color: inherit;
   max-width: 400px;
+  font-size: 1.2rem;
 }
 
 .link {
   position: relative;
   text-decoration: none;
-  color: #000;
+  color: darkblue;
   font-weight: bold;
 }
 
@@ -95,7 +96,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #000;
+  background-color: darkblue;
   transition: width 0.3s ease;
 }
 
@@ -156,5 +157,11 @@
   }
   .logo img {
     filter: invert(1);
+  }
+  .link::after {
+    background-color: #ffc;
+  }
+  .link{
+    color: #ffc;
   }
 }
