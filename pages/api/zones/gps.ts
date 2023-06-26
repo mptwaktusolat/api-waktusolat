@@ -3,12 +3,12 @@ import axios from "axios";
 
 
 export default async function handler(req, res) {
-    const {lat, lang} = req.query;
+    const {lat, long} = req.query;
 
     // check if lat & lang is undefined
-    if (lat === undefined || lang === undefined) {
+    if (lat === undefined || long === undefined) {
         return res.status(400).send({
-            message: "Please specify parameter 'lat' & 'lang'"
+            message: "Please specify parameter 'lat' & 'long'"
         });
     }
 
@@ -24,15 +24,19 @@ export default async function handler(req, res) {
     }
 
     const lookup = new PolygonLookup(geojsonData);
-    const result = lookup.search(lang, lat);
+    const result = lookup.search(long, lat);
 
     try {
         const jakimCode = result.properties.jakim_code;
         const state = result.properties.state;
         const district = result.properties.name;
 
+        if (jakimCode === undefined) return res.status(404).json({
+            error: `No JAKIM code associated with this coordinate`,
+        });
+
         return res.status(200).json({
-            'zone': jakimCode ?? "N/A",
+            'zone': jakimCode,
             'state': state,
             'district': district,
         })
