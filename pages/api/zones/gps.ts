@@ -48,8 +48,7 @@ export default async function handler(req, res) {
 }
 
 async function getZonesGeoJson() {
-    // TODO: Change back to master branch after testing: https://raw.githubusercontent.com/mptwaktusolat/malaysia.geojson/master/malaysia.district-jakim.geojson
-    const geoJsonDataSource = 'https://raw.githubusercontent.com/mptwaktusolat/malaysia.geojson/seperate/perak/malaysia.district-jakim.geojson';
+    const geoJsonDataSource = 'https://raw.githubusercontent.com/mptwaktusolat/malaysia.geojson/master/malaysia.district-jakim.geojson';
     const res = await axios.get(geoJsonDataSource);
     return res.data;
 }
