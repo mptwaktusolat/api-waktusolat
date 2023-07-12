@@ -13,7 +13,7 @@ describe('/api/zones', () => {
         await zones(req, res);
 
         expect(res._getStatusCode()).toBe(200);
-        expect(res._getJSONData()).toHaveLength(58) // number of negeri
+        expect(res._getJSONData()).toHaveLength(59) // number of negeri
         expect(res._getJSONData()).toEqual(expect.arrayContaining([
             expect.objectContaining({
                 jakimCode: expect.any(String),
@@ -80,12 +80,12 @@ describe('/api/zones/{code}', () => {
 });
 
 describe('/api/zones/gps', () => {
-    test('Get zones by GPS coordinates', async () => {
+    test('Get zones by GPS coordinates (Petaling, Selangor)', async () => {
         const {req, res} = createMocks({
             method: 'GET',
             query: {
                 lat: '3.0738',
-                lang: '101.5183'
+                long: '101.5183'
             }
         });
 
@@ -93,9 +93,28 @@ describe('/api/zones/gps', () => {
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual(expect.objectContaining({
-            state: "Selangor",
-            state_iso: "MY-10",
+            state: "SGR",
+            district: "Petaling",
             zone: "SGR01",
+        }));
+    });
+
+    test('Get zones by GPS coordinates (Pulau Tioman, Pahang)', async () => {
+        const {req, res} = createMocks({
+            method: 'GET',
+            query: {
+                lat: '2.781101',
+                long: '104.160032'
+            }
+        });
+
+        await zonesFromCoordinates(req, res);
+
+        expect(res._getStatusCode()).toBe(200);
+        expect(res._getJSONData()).toEqual(expect.objectContaining({
+            state: "PHG",
+            district: "Pulau Tioman",
+            zone: "PHG01",
         }));
     });
 
@@ -103,18 +122,13 @@ describe('/api/zones/gps', () => {
         const {req, res} = createMocks({
             method: 'GET',
             query: {
-                lat: '3.0738',
-                lang: '101.5183'
+                lat: '1.0738',
+                long: '10.5183'
             }
         });
 
         await zonesFromCoordinates(req, res);
 
-        expect(res._getStatusCode()).toBe(200);
-        expect(res._getJSONData()).toEqual(expect.objectContaining({
-            state: "Selangor",
-            state_iso: "MY-10",
-            zone: "SGR01",
-        }));
+        expect(res._getStatusCode()).toBe(404);
     });
 });
