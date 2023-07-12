@@ -46,6 +46,12 @@ export default function Home() {
                     >
                         <p>GitHub &rarr;</p>
                     </Link>
+                    <Link
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSe-zlZBW-8hO9XPDlLf-K7AUxtgupmD6bo4iouyLXFPAMnxFA/viewform?usp=sf_link"
+                        className={styles.card}
+                    >
+                        <p>Feedback &rarr;</p>
+                    </Link>
                 </div>
             </main>
             <footer className={styles.footer}>
