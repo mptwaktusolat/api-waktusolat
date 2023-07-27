@@ -52,7 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             fetch_for_month = monthNames[monthNumber - 1];
 
         } catch (e) {
-            return res.status(400).json({
+            return res.status(500).json({
                 error: `${e.message}`
             });
         }
