@@ -97,5 +97,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // lastly, assign the prayer time data
     response['prayers'] = documentData.prayerTime;
 
+    res.setHeader('Cache-Control', 'public, s-maxage=43200') // 12 hours cache
     res.status(200).json(response)
 }
