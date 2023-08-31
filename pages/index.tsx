@@ -32,6 +32,10 @@ export default function Home() {
                     <span>See all <Link className={styles.link} href="/locations">prayer time zones</Link>.</span>
                 </div>
 
+                <div className={styles.textContent}>
+                    <span>Check <Link className={styles.link} href="https://mpt-data-health.web.app/">data health</Link>.</span>
+                </div>
+
                 <div className={styles.grid}>
                     <Link
                         href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia"
