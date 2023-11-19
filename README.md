@@ -58,6 +58,7 @@ View the fetcher implementation [here](./fetcher).
 * **`GET`** `/api/zones` - Get all the zones with Jakim code, daerah & negeri for all location.
 * **`GET`** `/api/zones/{locationCode}` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Return zones **only** for the supplied zone.
 * **`GET`** `/api/mosque/{locationCode}` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
+* **`GET`** `api/jadual_solat` - Get monthly timetable for chosen zone in PDF
 
 #### Internal usage
 * **`POST`** `/api/feedback`

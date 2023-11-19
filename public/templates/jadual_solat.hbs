@@ -16,12 +16,13 @@
             font-family: Arial, Helvetica, sans-serif;
             width: 100%;
             text-align: center;
+            font-size: 14px;
         }
     </style>
 </head>
 <body class="m-4">
-<h1>{{ title }}</h1>
-<p>November 2023</p>
+<h2>{{ title }} : {{ monthYear }}</h2>
+<p>Lokasi: <strong>{{ zone }}</strong></p>
 
 <table class="table table-bordered table-sm">
     <thead class="table-dark">
@@ -39,15 +40,18 @@
     {{#each prayerTimes}}
         <tr>
             <td>{{this.date}}</td>
-            <td>{{this.subuh}}</td>
+            <td>{{this.fajr}}</td>
             <td>{{this.syuruk}}</td>
-            <td>{{this.zohor}}</td>
-            <td>{{this.asar}}</td>
+            <td>{{this.dhuhr}}</td>
+            <td>{{this.asr}}</td>
             <td>{{this.maghrib}}</td>
-            <td>{{this.isyak}}</td>
+            <td>{{this.isha}}</td>
         </tr>
     {{/each}}
     </tbody>
 </table>
+<footer>
+    <p class="text-center text-muted fs-6 fw-light">Dijana pada {{ generationDate }}</p>
+</footer>
 </body>
 </html>
