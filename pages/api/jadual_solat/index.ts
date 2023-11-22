@@ -75,6 +75,10 @@ export default async function handler(req, res) {
 
     await browser.close();
 
+    res.setHeader('Vercel-CDN-Cache-Control', 'max-age=43200'); // 12 hours
+    res.setHeader('CDN-Cache-Control', 'max-age=28800'); // 8 hours
+    res.setHeader('Cache-Control', 'max-age=1800'); // 30 minutes
+
     // Send the generated PDF as a response
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'inline; filename=generated.pdf');
