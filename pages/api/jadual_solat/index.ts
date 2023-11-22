@@ -1,10 +1,10 @@
-import puppeteer, {Protocol} from 'puppeteer-core';
+import puppeteer from 'puppeteer-core';
 import path from 'path';
 import fs from 'fs/promises';
 import handlebars from 'handlebars';
 import {initializeApp} from "firebase/app";
 import {collection, doc, getDoc, getFirestore} from "firebase/firestore";
-import { getJakimZonesList } from '../zones/index'
+import {getJakimZonesList} from '../zones'
 
 export default async function handler(req, res) {
     const {zone, month, year} = req.query;
@@ -116,14 +116,13 @@ async function getPrayerData(zone: string, year: number, month:number) {
 }
 
 // Function to format Unix timestamp to HH:mm
-function formatTime(timestamp) {
+function formatTime(timestamp: number) {
     const date = new Date(timestamp * 1000);
-    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kuala_Lumpur'});
 }
 
 // get zone details
-async function getZoneDetail(zone) {
+async function getZoneDetail(zone: string) {
     const res = await getJakimZonesList();
-    const zoneDetail = res.find(item => item.jakimCode === zone.toUpperCase());
-    return zoneDetail;
+    return res.find(item => item.jakimCode === zone.toUpperCase());
 }
