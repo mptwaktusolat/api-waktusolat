@@ -19,7 +19,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/:path((?!locations|docs).*)",
+        // Make http://localhost:3000/v2/solat/sgr01 resolved to http://localhost:3000/api/v2/solat/sgr01
+        source: "/:path((?!locations|docs|api).*)",
         destination: "/api/:path"
       },
     ]
