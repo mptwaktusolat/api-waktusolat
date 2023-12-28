@@ -1,7 +1,7 @@
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
-A helper server for [Malaysia Prayer Time](https://github.com/mptwaktusolat/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work/
+A Malaysia Prayer Time REST API server, originally build for [Malaysia Prayer Time](https://github.com/mptwaktusolat/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work.
 
 ## Getting Started
 
@@ -60,5 +60,5 @@ View the fetcher implementation [here](./fetcher).
 * **`GET`** `/api/mosque/{locationCode}` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
 * **`GET`** `api/jadual_solat` - Get monthly timetable for chosen zone in PDF
 
-#### Internal usage
+#### Internal usage (MPT App)
 * **`POST`** `/api/feedback`

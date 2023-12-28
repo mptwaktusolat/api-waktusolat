@@ -20,12 +20,12 @@ export default function Home() {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
-                    Welcome to <Link href="#">MPT Server!</Link>
+                    Welcome to <Link href="#">Waktu Solat API!</Link>
                 </h1>
 
                 <p className={styles.description}>
-                    <span>Malaysia prayer time API is <b>available</b>! Learn more on <Link className={styles.link}
-                                                                                            href={"https://waktusolat.iqfareez.com/api"}>docs</Link>.</span>
+                    <span>Malaysia prayer time API is <b>available</b>! Learn & try it live on <Link className={styles.link}
+                        href={'/docs'}>docs</Link>.</span>
                 </p>
 
                 <div className={styles.textContent}>
