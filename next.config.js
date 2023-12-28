@@ -15,6 +15,14 @@ const nextConfig = {
         ]
       }
     ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/:path((?!locations|docs).*)",
+        destination: "/api/:path"
+      },
+    ]
   }
 }
 
