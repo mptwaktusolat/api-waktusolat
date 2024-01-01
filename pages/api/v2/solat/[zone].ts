@@ -3,13 +3,29 @@ import {initializeApp} from "firebase/app";
 import {collection, doc, getDoc, getDocs, getFirestore, Timestamp} from "firebase/firestore";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const {zone, year, month} = req.query;
+    const {zone, year, month, debug} = req.query;
 
-    if (year === undefined) {
-        // check is body is undefined or empty body "{}"
-        return res.status(400).send({
-            message: "Please specify parameter 'year'"
+    const utcDate = new Date();
+    // Set the time zone to GMT+8
+    const gmt8Options = { timeZone: 'Asia/Kuala_Lumpur' };
+    const gmt8Date = new Intl.DateTimeFormat('en-US', gmt8Options).format(utcDate);
+
+    // Extract the year from the GMT+8 date
+    const malaysiaCurrentDate = new Date(gmt8Date);
+
+    let queryYear: number;
+    if (!year) {
+        queryYear = malaysiaCurrentDate.getFullYear();        
+    } else {
+        queryYear = parseInt(year.toString());
+    }
+
+    // check for valid year
+    if (isNaN(queryYear)) {
+        res.status(500).json({
+            error: `Invalid year: ${year.toString()}`
         });
+        return;
     }
 
     const firebaseConfig = {
@@ -29,9 +45,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(firebaseApp);
 
-    // get current year & month (by its name)
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().toLocaleString('en-MY', {
+    // get current month (by its name)
+    const currentMonth = malaysiaCurrentDate.toLocaleString('en-MY', {
         month: 'short'
     });
 
@@ -58,12 +73,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
     }
 
-    const fetch_for_year = year || currentYear;
-
-    console.log(`waktusolat/${fetch_for_year}/${fetch_for_month}`)
+    console.log(`waktusolat/${queryYear}/${fetch_for_month}`)
 
     // load db collection
-    const monthCollectionRef = collection(db, `waktusolat/${fetch_for_year}/${fetch_for_month}`);
+    const monthCollectionRef = collection(db, `waktusolat/${queryYear}/${fetch_for_month}`);
 
     // get document with ID "SGR01" from collection
     const docRef = doc(monthCollectionRef, zone.toString().toUpperCase());
@@ -74,7 +87,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // check if document exists
     if (!docSnapshot.exists()) {
         res.status(404).json({
-            error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${fetch_for_year}`
+            error: `No data found for zone: ${zone.toString().toUpperCase()} for ${fetch_for_month.toString().toUpperCase()}/${queryYear}`
         });
         return;
     }
@@ -83,13 +96,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // build response
     let response = {};
+    if (debug && debug == '1') response['debug'] = {
+        'malaysiaDate' : malaysiaCurrentDate.toLocaleDateString()
+    }
     response['zone'] = zone.toString().toUpperCase()
-    response['year'] = parseInt(fetch_for_year);
+    response['year'] = queryYear;
     response['month'] = fetch_for_month;
 
     // record the last update time
     const rootCollection = collection(db, `waktusolat`);
-    const yearDocRef = doc(rootCollection, fetch_for_year.toString());
+    const yearDocRef = doc(rootCollection, queryYear.toString());
     const yearDocData = await getDoc(yearDocRef);
     const lastFetchTimestamp: Timestamp = yearDocData.data().last_updated[fetch_for_month];
     response['last_updated'] = lastFetchTimestamp.toDate();
