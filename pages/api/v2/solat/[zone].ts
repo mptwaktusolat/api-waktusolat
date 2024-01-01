@@ -84,7 +84,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // build response
     let response = {};
     response['zone'] = zone.toString().toUpperCase()
-    response['year'] = fetch_for_year;
+    response['year'] = parseInt(fetch_for_year);
     response['month'] = fetch_for_month;
 
     // record the last update time
