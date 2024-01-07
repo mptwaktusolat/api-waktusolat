@@ -1,6 +1,10 @@
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
+# Waktu Solat API | Malaysia Prayer Time API
+
+> Formally 'MPT Server'
+
 A Malaysia Prayer Time REST API server, originally build for [Malaysia Prayer Time](https://github.com/mptwaktusolat/app_waktu_solat_malaysia) app. Provide necessary data and procssing for the app features to work.
 
 ## Getting Started
@@ -27,9 +31,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## How are the prayer time data is updated every month?
+## How are the prayer time data is updated every month? (Old method)
 
-[![Fetch latest data](https://github.com/mptwaktusolat/mpt-server/actions/workflows/fetcher.yml/badge.svg)](https://github.com/mptwaktusolat/mpt-server/actions/workflows/fetcher.yml)
+> [!NOTE]
+> This method is used to update the `/solat` endpoint. Now that the endpoint is deprecated, I'll stop the automatic workflow soon. For latest method on fetching the prayer time, see [waktusolat-fetcher](https://github.com/mptwaktusolat/waktusolat-fetcher)
+
 
 The data is updated automatically every month using GitHub Action. The overall flow is depicted in the diagram below.
 
@@ -52,13 +58,7 @@ View the fetcher implementation [here](./fetcher).
 
 #### Public usage
 
-* **`GET`** `/api/solat` - Get the latest prayer time data for the current month for all location
-* **`GET`** `/api/solat/{locationCode}` - Get the latest prayer time data for the current month for the given location. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
-* **`GET`** `/api/solat/{locationCode}/{day}` - Same as above, but you can filter for only a day (1-31)
-* **`GET`** `/api/zones` - Get all the zones with Jakim code, daerah & negeri for all location.
-* **`GET`** `/api/zones/{locationCode}` - Note: Only give the initial string to the location code. Eg: `kdh`, `prk`, etc. Return zones **only** for the supplied zone.
-* **`GET`** `/api/mosque/{locationCode}` - Get the mosque image for the supplied location code. See all `locationCode` [here](https://mpt-server.vercel.app/locations).
-* **`GET`** `api/jadual_solat` - Get monthly timetable for chosen zone in PDF
+See https://api.waktusolat.app/docs
 
 #### Internal usage (MPT App)
 * **`POST`** `/api/feedback`
