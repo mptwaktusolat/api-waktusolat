@@ -6,7 +6,7 @@ import styles from "../styles/Locations.module.css";
 import "toastify-js/src/toastify.css"
 import {RotatingTriangles} from "react-loader-spinner";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Locations() {
     const {data, error} = useSWR('/api/zones', fetcher);
@@ -42,32 +42,32 @@ export default function Locations() {
     return (
         <>
             <Head>
-                <title>Locations - MPT Server</title>
-                <meta name="description" content="JAKIM zones list"/>
+                <title>Locations | Waktu Solat API</title>
+                <meta name="description" content="List of JAKIM prayer zones"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <div className={styles.container}>
+            <div className='mx-auto max-w-fit px-4 sm:px-7 xl:px-10 2xl:px-14'>
                 <div className={styles.description}>
-                    <h1>All locations. Based on JAKIM.</h1>
-                    <h3>Also available in <Link className={styles.link} href="/api/zones">JSON</Link> format</h3>
-                    {(!data) &&
-                        <div>
-                            <RotatingTriangles
-                                visible={true}
-                                height="80"
-                                width="80"
-                                ariaLabel="rotating-triangels-loading"
-                                wrapperStyle={{}}
-                                wrapperClass="rotating-triangels-wrapper"
-                            />
-                            <p>Loading...</p>
-                        </div>
-                    }
+                    <h1 className="text-2xl sm:text-3xl font-semibold" >All locations. Based on JAKIM.</h1>
+                    <h3 className="text-lg pt-2">Also available in <Link className={styles.link} href="/docs#tag/zones">JSON</Link> format. New: See zones on <a className={styles.link} href="https://peta.waktusolat.app">map</a>!</h3>
                 </div>
+                {(!data) &&
+                    <div className='mx-auto max-w-max'>
+                        <RotatingTriangles
+                            visible={true}
+                            height="90"
+                            width="90"
+                            ariaLabel="rotating-triangels-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="rotating-triangels-wrapper"
+                        />
+                        <p className='text-center'>Loading...</p>
+                    </div>
+                }
                 {
                     Object.entries(zones).map(([negeri, data]) => (
-                        <div key={negeri} style={{paddingBottom: 15 + 'px'}}>
-                            <h2>{negeri}</h2>
+                        <div key={negeri} className='pb-5'>
+                            <h2 className='text-xl font-semibold py-1' > {negeri}</h2>
                             {
                                 data.map(zone => (
                                     <div key={zone.jakimCode} className={styles.zoneItem}>
