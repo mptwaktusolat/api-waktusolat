@@ -27,7 +27,7 @@ export default function Home() {
 
       <main className="flex items-center justify-center min-h-svh flex-col">
         <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48 ">
-          <div className="container px-4 md:px-6">
+          <div className=" px-4 md:px-6">
             <div className="flex flex-col space-y-8 text-center">
               <div className="space-y-6">
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl/none">
