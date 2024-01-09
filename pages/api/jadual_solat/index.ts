@@ -28,8 +28,11 @@ export default async function handler(req, res) {
         hijri: item.hijri
     }));
 
+    // NOTE: I'm using browserless.io (https://www.browserless.io/) service to connect to the headless chrome instance.
+    // Alternatively, you can setup your own Browserless instance. Eg: https://railway.app/template/browserless
+    // While not in production, you an also use your local CHROME instance
     const browser = await puppeteer.connect({
-        browserWSEndpoint: `wss://browserless-production-cd51.up.railway.app/`,
+        browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_TOKEN}`,
     });
     const page = await browser.newPage();
 
