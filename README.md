@@ -9,16 +9,28 @@ A Malaysia Prayer Time REST API server, originally build for [Malaysia Prayer Ti
 
 ## Getting Started
 
+### Prepare environment
+
+> [!NOTE]
+> If you didn't plan to use` /api/jadual_solat` endpoint, you may skip this step and proceed to [Start development server](#start-development-server)
+
+Create `.env.local` at the root the project. Example environment vars are in the `.env.example` file. Or run:
+
+```
+cp .env.example .env.local
+```
+
+`/api/jadual_solat` will generate PDF based on the prayer data. To do so, it need to access Chrome. In development, you can use your local Chrome, but on Production, you need to setup the Chrome instance somewhere. I use https://www.browserless.io/ service.
+
+Grab the API key and paste to `BROWSERLESS_TOKEN` key.
+
+### Start development server
+
+
 First, install the dependencies:
 
 ```bash
 yarn install
-```
-
-(Optional) Get the Web API key from Firebase Console. Create a `.env.local` file and add the following:
-
-```.env
-FIREBASE_PROJECT_API_KEY=AIzaXXXXXXXXXXXXXXXXXXX
 ```
 
 Run the development server:
@@ -30,6 +42,14 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## (Optional) Make your own Firestore database instance
+
+`/api/v2/solat` endpoint will fetch the prayer data from Firestore datatabase. To prepare the data needed, see https://github.com/mptwaktusolat/waktusolat-fetcher.
+
+
+Once setup, set `FIREBASE_PROJECT_API_KEY` to your own Firebase API key.
+
 
 ## How are the prayer time data is updated every month? (Old method)
 
