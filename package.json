@@ -47,5 +47,5 @@
   "resolutions": {
     "vue": "3.3.13"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.1.0"
 }
