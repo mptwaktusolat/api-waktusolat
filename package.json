@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@scalar/api-reference": "1.17.8",
+    "@scalar/api-reference": "^1.17.14",
     "@vercel/analytics": "^1.0.0",
     "axios": "^1.4.0",
     "firebase": "^9.9.3",

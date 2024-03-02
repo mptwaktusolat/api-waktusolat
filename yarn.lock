@@ -498,7 +498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/autocomplete@npm:^6.0.0":
+"@codemirror/autocomplete@npm:^6.0.0, @codemirror/autocomplete@npm:^6.12.0":
   version: 6.13.0
   resolution: "@codemirror/autocomplete@npm:6.13.0"
   dependencies:
@@ -527,7 +527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/lang-css@npm:^6.0.0":
+"@codemirror/lang-css@npm:^6.0.0, @codemirror/lang-css@npm:^6.2.1":
   version: 6.2.1
   resolution: "@codemirror/lang-css@npm:6.2.1"
   dependencies:
@@ -582,6 +582,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@codemirror/lang-yaml@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@codemirror/lang-yaml@npm:6.0.0"
+  dependencies:
+    "@codemirror/autocomplete": "npm:^6.0.0"
+    "@codemirror/language": "npm:^6.0.0"
+    "@codemirror/state": "npm:^6.0.0"
+    "@lezer/common": "npm:^1.2.0"
+    "@lezer/yaml": "npm:^1.0.0"
+  checksum: 10c0/c87916fecce23da5562b0d5f30a0fc5dfbc695cfb696b80076c8514bbbe97dbde5a69706e2c931d17e5622de371f4f31312e65a44d6602bf756a7bfbf4cd2e1f
+  languageName: node
+  linkType: hard
+
 "@codemirror/language@npm:^6.0.0, @codemirror/language@npm:^6.10.1, @codemirror/language@npm:^6.4.0, @codemirror/language@npm:^6.6.0":
   version: 6.10.1
   resolution: "@codemirror/language@npm:6.10.1"
@@ -593,15 +606,6 @@ __metadata:
     "@lezer/lr": "npm:^1.0.0"
     style-mod: "npm:^4.0.0"
   checksum: 10c0/b910b7be491d3c73389e31d54a6910ad82b35f8ba7a7a48048ea949d881a16e261789b133bee7d458bc5cb1a14eaa2e18f50ac643da17a29d9323d346d3f2a74
-  languageName: node
-  linkType: hard
-
-"@codemirror/legacy-modes@npm:^6.0.0":
-  version: 6.3.3
-  resolution: "@codemirror/legacy-modes@npm:6.3.3"
-  dependencies:
-    "@codemirror/language": "npm:^6.0.0"
-  checksum: 10c0/59f227794f15df21c05ebb751fe32499f1638e7d55de0fc2712a8c87e7e18be770bbe982a35253481eafec35df3f231a54b2dee6e8ca998f121324830bb8c8ad
   languageName: node
   linkType: hard
 
@@ -1697,6 +1701,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lezer/yaml@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "@lezer/yaml@npm:1.0.2"
+  dependencies:
+    "@lezer/common": "npm:^1.2.0"
+    "@lezer/highlight": "npm:^1.0.0"
+    "@lezer/lr": "npm:^1.4.0"
+  checksum: 10c0/5ab38b9945523184b1780cd1011be0945c834d3b88600f924821ca0e370d40e3a4c8f5fce6a91e808456cf77c561a941d40538534c27e9529edd156aece2bc3d
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:14.0.4":
   version: 14.0.4
   resolution: "@next/env@npm:14.0.4"
@@ -1940,14 +1955,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scalar/api-client@npm:0.12.8":
-  version: 0.12.8
-  resolution: "@scalar/api-client@npm:0.12.8"
+"@scalar/api-client@npm:0.12.13":
+  version: 0.12.13
+  resolution: "@scalar/api-client@npm:0.12.13"
   dependencies:
     "@headlessui/vue": "npm:^1.7.16"
-    "@scalar/components": "npm:0.2.6"
+    "@scalar/components": "npm:0.4.1"
     "@scalar/themes": "npm:0.5.10"
-    "@scalar/use-codemirror": "npm:0.8.6"
+    "@scalar/use-codemirror": "npm:0.8.8"
     "@scalar/use-modal": "npm:0.2.8"
     "@vueuse/core": "npm:^10.4.1"
     axios: "npm:^1.6.5"
@@ -1958,21 +1973,21 @@ __metadata:
     vue: "npm:^3.3.0"
   peerDependencies:
     vue: ^3.3.0
-  checksum: 10c0/faa729500eaa6bfd5f6dbc51e4b68a446db6347033ac8a65df0916a28c11b1d8f42be0b15eada383440e856676aefc59dd3386efe58acba21e566ee372d391d3
+  checksum: 10c0/0aa9e47315d3c8f0632dd25c12eb15ad6dfba55861d620d55dbcc4d1887fdc9ad1d4d4d6cb74dacca4050cc18d6246327ec9ebac23dd0bfec9a8e9c3bfb7bba9
   languageName: node
   linkType: hard
 
-"@scalar/api-reference@npm:1.17.8":
-  version: 1.17.8
-  resolution: "@scalar/api-reference@npm:1.17.8"
+"@scalar/api-reference@npm:^1.17.14":
+  version: 1.17.14
+  resolution: "@scalar/api-reference@npm:1.17.14"
   dependencies:
     "@floating-ui/vue": "npm:^1.0.2"
     "@headlessui/vue": "npm:^1.7.16"
-    "@scalar/api-client": "npm:0.12.8"
-    "@scalar/components": "npm:0.2.6"
+    "@scalar/api-client": "npm:0.12.13"
+    "@scalar/components": "npm:0.4.1"
     "@scalar/snippetz": "npm:^0.1.5"
-    "@scalar/swagger-editor": "npm:0.10.10"
-    "@scalar/swagger-parser": "npm:0.5.18"
+    "@scalar/swagger-editor": "npm:0.10.14"
+    "@scalar/swagger-parser": "npm:0.5.19"
     "@scalar/themes": "npm:0.5.10"
     "@scalar/use-modal": "npm:0.2.8"
     "@scalar/use-tooltip": "npm:0.5.11"
@@ -1987,7 +2002,6 @@ __metadata:
     js-yaml: "npm:^4.1.0"
     openapi-types: "npm:^12.1.3"
     postcss-nested: "npm:^6.0.1"
-    prismjs: "npm:^1.29.0"
     rehype-external-links: "npm:^3.0.0"
     rehype-format: "npm:^5.0.0"
     rehype-highlight: "npm:^7.0.0"
@@ -2004,13 +2018,13 @@ __metadata:
   peerDependencies:
     unified: ^11.0.0
     vue: ^3.3.0
-  checksum: 10c0/31d214b5bfdfb2c60d1dd56c8c095b4d8a33e7aeb8b3db530d47b057531e5fff9406ef13c50e35bece3474c85c9cda4dbdf9a06766978b205006d77a1454d0d3
+  checksum: 10c0/852ad77b68b96c85b93a943eb06c6de195210bb87fb4348a23e9fddd246d1bf3c2a457eed160b148f46be43838ed747e380e67bdfc23e26254a371b5ca080685
   languageName: node
   linkType: hard
 
-"@scalar/components@npm:0.2.6":
-  version: 0.2.6
-  resolution: "@scalar/components@npm:0.2.6"
+"@scalar/components@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@scalar/components@npm:0.4.1"
   dependencies:
     "@headlessui/vue": "npm:^1.7.16"
     "@vueuse/core": "npm:^10.4.1"
@@ -2018,9 +2032,10 @@ __metadata:
     class-variance-authority: "npm:^0.7.0"
     cva: "npm:1.0.0-beta.1"
     nanoid: "npm:^5.0.1"
+    prismjs: "npm:^1.29.0"
     tailwind-merge: "npm:^2.0.0"
     vue: "npm:^3.3.0"
-  checksum: 10c0/94d76e009e193b57a66638d78049b049c2df32c9f4d8039b1d0ce1b4a5d9ed9f19864087ca9e8c3ef097e26da419b9a0ce03fa947115025375b36bf37b4a9766
+  checksum: 10c0/08b88cab18ef93f17e4cfc8e326320d1c207208924da8cfb3fa3ecc27986e9b67f9cd0621b216d2b65d361fb2a6809d0b4c7fb7f5d90181173397c91ade1106d
   languageName: node
   linkType: hard
 
@@ -2072,28 +2087,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scalar/swagger-editor@npm:0.10.10":
-  version: 0.10.10
-  resolution: "@scalar/swagger-editor@npm:0.10.10"
+"@scalar/swagger-editor@npm:0.10.14":
+  version: 0.10.14
+  resolution: "@scalar/swagger-editor@npm:0.10.14"
   dependencies:
-    "@scalar/components": "npm:0.2.6"
+    "@scalar/components": "npm:0.4.1"
     "@scalar/themes": "npm:0.5.10"
-    "@scalar/use-codemirror": "npm:0.8.6"
+    "@scalar/use-codemirror": "npm:0.8.8"
     "@vueuse/core": "npm:^10.4.1"
     vue: "npm:^3.3.0"
   peerDependencies:
     vue: ^3.3.0
-  checksum: 10c0/637a7eb4781612bf31de8017ce29314077f7a0e8596b65fd89850162d1329536f7598895532457662249eb43bfab1958522990850afda4888386a6993b6bd679
+  checksum: 10c0/b56ba64c585c2bca541f5d8e9f11ec8bf62374bee6d63eaaf430f7cc55bf3d27efc96139464782b59299d8c85bd9a99f738cdf96b9230cfee9f5527b6e07e422
   languageName: node
   linkType: hard
 
-"@scalar/swagger-parser@npm:0.5.18":
-  version: 0.5.18
-  resolution: "@scalar/swagger-parser@npm:0.5.18"
+"@scalar/swagger-parser@npm:0.5.19":
+  version: 0.5.19
+  resolution: "@scalar/swagger-parser@npm:0.5.19"
   dependencies:
     "@apidevtools/swagger-parser": "npm:^10.1.0"
     js-yaml: "npm:^4.1.0"
-  checksum: 10c0/99af32b4661dc8c251ba23b3827f3120ff8001c0cbade7c5b3112074ff78393837078d78e5b13a6b9b963938a4485276c67f0dfeab48504dd8aea8fb3143aa2d
+  checksum: 10c0/10f375f3f479c0d025229a7dd06d3e8d2cbdf6e660c077841c21b028ed9c513f5757fafa32eeeff653f45e9eb67056d1235223b2bb1bcaca3c2d07319f21c88b
   languageName: node
   linkType: hard
 
@@ -2106,14 +2121,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scalar/use-codemirror@npm:0.8.6":
-  version: 0.8.6
-  resolution: "@scalar/use-codemirror@npm:0.8.6"
+"@scalar/use-codemirror@npm:0.8.8":
+  version: 0.8.8
+  resolution: "@scalar/use-codemirror@npm:0.8.8"
   dependencies:
+    "@codemirror/autocomplete": "npm:^6.12.0"
+    "@codemirror/lang-css": "npm:^6.2.1"
     "@codemirror/lang-html": "npm:^6.4.8"
     "@codemirror/lang-json": "npm:^6.0.0"
+    "@codemirror/lang-yaml": "npm:^6.0.0"
     "@codemirror/language": "npm:^6.10.1"
-    "@codemirror/legacy-modes": "npm:^6.0.0"
     "@codemirror/state": "npm:^6.4.0"
     "@codemirror/view": "npm:^6.23.1"
     "@lezer/common": "npm:^1.2.1"
@@ -2126,7 +2143,7 @@ __metadata:
   peerDependencies:
     vue: ^3.3.0
     yjs: ^13.6.0
-  checksum: 10c0/52dc52e21de37820ec42c257bf3e346354c47b7aa7346d3944778e0c0075a28a5626de623b9fdf509420f607f639db5c0ac1547aa8a5f39467366b30c29c5487
+  checksum: 10c0/eeeebc624891bf74f5a458185251c94a68f8bbce973d5d378194c5e04b9b78acf1d86094c048a1d90df00052dd73133beb799a89e44f2f2cc1ac9863ebfa912f
   languageName: node
   linkType: hard
 
@@ -7883,7 +7900,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mpt-server@workspace:."
   dependencies:
-    "@scalar/api-reference": "npm:1.17.8"
+    "@scalar/api-reference": "npm:^1.17.14"
     "@testing-library/jest-dom": "npm:^5.16.5"
     "@testing-library/react": "npm:^13.4.0"
     "@types/node": "npm:^20.10.5"
