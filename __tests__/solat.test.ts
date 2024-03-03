@@ -13,7 +13,7 @@ describe('/api/solat', () => {
         await solat(req, res);
 
         expect(res._getStatusCode()).toBe(200);
-        expect(res._getJSONData()).toHaveLength(58) // number of negeri
+        expect(res._getJSONData()).toHaveLength(59) // number of negeri
         expect(res._getJSONData()).toEqual(expect.arrayContaining([
             expect.objectContaining({
                 prayerTime: expect.any(Array<any>),
