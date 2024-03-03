@@ -48,7 +48,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 `/api/v2/solat` endpoint will fetch the prayer data from Firestore datatabase. To prepare the data needed, see https://github.com/mptwaktusolat/waktusolat-fetcher.
 
 
-Once setup, set `FIREBASE_PROJECT_API_KEY` to your own Firebase API key.
+Once setup, set `FIREBASE_API_KEY` to your own Firebase API key.
 
 
 ## How are the prayer time data is updated every month? (Old method)
