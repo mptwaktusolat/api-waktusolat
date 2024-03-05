@@ -1955,12 +1955,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scalar/api-client@npm:0.12.13":
-  version: 0.12.13
-  resolution: "@scalar/api-client@npm:0.12.13"
+"@scalar/api-client@npm:0.12.14":
+  version: 0.12.14
+  resolution: "@scalar/api-client@npm:0.12.14"
   dependencies:
     "@headlessui/vue": "npm:^1.7.16"
-    "@scalar/components": "npm:0.4.1"
+    "@scalar/components": "npm:0.4.2"
     "@scalar/themes": "npm:0.5.10"
     "@scalar/use-codemirror": "npm:0.8.8"
     "@scalar/use-modal": "npm:0.2.8"
@@ -1973,21 +1973,21 @@ __metadata:
     vue: "npm:^3.3.0"
   peerDependencies:
     vue: ^3.3.0
-  checksum: 10c0/0aa9e47315d3c8f0632dd25c12eb15ad6dfba55861d620d55dbcc4d1887fdc9ad1d4d4d6cb74dacca4050cc18d6246327ec9ebac23dd0bfec9a8e9c3bfb7bba9
+  checksum: 10c0/edf51191852c08610b0d222cfd1d64be3179403838cd841e712e9b2d6ecb6cc4e744270fe114f85d050c87d5b424fbbace96669207e28747eff2cb661adbb1be
   languageName: node
   linkType: hard
 
-"@scalar/api-reference@npm:^1.17.14":
-  version: 1.17.14
-  resolution: "@scalar/api-reference@npm:1.17.14"
+"@scalar/api-reference@npm:^1.17.16":
+  version: 1.17.16
+  resolution: "@scalar/api-reference@npm:1.17.16"
   dependencies:
     "@floating-ui/vue": "npm:^1.0.2"
     "@headlessui/vue": "npm:^1.7.16"
-    "@scalar/api-client": "npm:0.12.13"
-    "@scalar/components": "npm:0.4.1"
+    "@scalar/api-client": "npm:0.12.14"
+    "@scalar/components": "npm:0.4.2"
     "@scalar/snippetz": "npm:^0.1.5"
-    "@scalar/swagger-editor": "npm:0.10.14"
-    "@scalar/swagger-parser": "npm:0.5.19"
+    "@scalar/swagger-editor": "npm:0.10.15"
+    "@scalar/swagger-parser": "npm:0.5.20"
     "@scalar/themes": "npm:0.5.10"
     "@scalar/use-modal": "npm:0.2.8"
     "@scalar/use-tooltip": "npm:0.5.11"
@@ -2018,13 +2018,13 @@ __metadata:
   peerDependencies:
     unified: ^11.0.0
     vue: ^3.3.0
-  checksum: 10c0/852ad77b68b96c85b93a943eb06c6de195210bb87fb4348a23e9fddd246d1bf3c2a457eed160b148f46be43838ed747e380e67bdfc23e26254a371b5ca080685
+  checksum: 10c0/f843b308b1a04a4d335a17e581c0f93a346e1f30fa635c76ce8e4932df655e121164de3ae3462692a33786d7628aab6292986b535956b6a23b53782aaddd2dea
   languageName: node
   linkType: hard
 
-"@scalar/components@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@scalar/components@npm:0.4.1"
+"@scalar/components@npm:0.4.2":
+  version: 0.4.2
+  resolution: "@scalar/components@npm:0.4.2"
   dependencies:
     "@headlessui/vue": "npm:^1.7.16"
     "@vueuse/core": "npm:^10.4.1"
@@ -2035,7 +2035,7 @@ __metadata:
     prismjs: "npm:^1.29.0"
     tailwind-merge: "npm:^2.0.0"
     vue: "npm:^3.3.0"
-  checksum: 10c0/08b88cab18ef93f17e4cfc8e326320d1c207208924da8cfb3fa3ecc27986e9b67f9cd0621b216d2b65d361fb2a6809d0b4c7fb7f5d90181173397c91ade1106d
+  checksum: 10c0/0d4ca3ff276d9ca9788df552e87918fa9d209e74503c5d4602b0a705d8b0082863d7bd42e5c0ce814a84e1d710947cde87c0e143cb70c38ecdfa44cbe84596ef
   languageName: node
   linkType: hard
 
@@ -2087,28 +2087,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scalar/swagger-editor@npm:0.10.14":
-  version: 0.10.14
-  resolution: "@scalar/swagger-editor@npm:0.10.14"
+"@scalar/swagger-editor@npm:0.10.15":
+  version: 0.10.15
+  resolution: "@scalar/swagger-editor@npm:0.10.15"
   dependencies:
-    "@scalar/components": "npm:0.4.1"
+    "@scalar/components": "npm:0.4.2"
     "@scalar/themes": "npm:0.5.10"
     "@scalar/use-codemirror": "npm:0.8.8"
     "@vueuse/core": "npm:^10.4.1"
     vue: "npm:^3.3.0"
   peerDependencies:
     vue: ^3.3.0
-  checksum: 10c0/b56ba64c585c2bca541f5d8e9f11ec8bf62374bee6d63eaaf430f7cc55bf3d27efc96139464782b59299d8c85bd9a99f738cdf96b9230cfee9f5527b6e07e422
+  checksum: 10c0/7f75043be988195a05e8050e7238e5f222466d130f25a955758a1b1fc797f76f9fe74cd936ba90b89b921248accc373b8df274ef4cc11d469e4209d3bf436e84
   languageName: node
   linkType: hard
 
-"@scalar/swagger-parser@npm:0.5.19":
-  version: 0.5.19
-  resolution: "@scalar/swagger-parser@npm:0.5.19"
+"@scalar/swagger-parser@npm:0.5.20":
+  version: 0.5.20
+  resolution: "@scalar/swagger-parser@npm:0.5.20"
   dependencies:
     "@apidevtools/swagger-parser": "npm:^10.1.0"
     js-yaml: "npm:^4.1.0"
-  checksum: 10c0/10f375f3f479c0d025229a7dd06d3e8d2cbdf6e660c077841c21b028ed9c513f5757fafa32eeeff653f45e9eb67056d1235223b2bb1bcaca3c2d07319f21c88b
+  checksum: 10c0/a042b020d0eb9c5ee2257189eb586fd5dfb1ae82007c080101a7629aacf483d83a4cfa5673cae66f3fbaa3c0976de121c077721231678d4abdf02b9f9ef74e87
   languageName: node
   linkType: hard
 
@@ -7900,7 +7900,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mpt-server@workspace:."
   dependencies:
-    "@scalar/api-reference": "npm:^1.17.14"
+    "@scalar/api-reference": "npm:^1.17.16"
     "@testing-library/jest-dom": "npm:^5.16.5"
     "@testing-library/react": "npm:^13.4.0"
     "@types/node": "npm:^20.10.5"

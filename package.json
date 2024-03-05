@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@scalar/api-reference": "^1.17.14",
+    "@scalar/api-reference": "^1.17.16",
     "@vercel/analytics": "^1.0.0",
     "axios": "^1.4.0",
     "firebase": "^9.9.3",
@@ -44,5 +44,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.1"
 }
