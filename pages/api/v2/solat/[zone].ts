@@ -9,10 +9,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Set the time zone to GMT+8
     const gmt8Options = { timeZone: 'Asia/Kuala_Lumpur' };
     const gmt8Date = new Intl.DateTimeFormat('en-US', gmt8Options).format(utcDate);
-
-    // Extract the year from the GMT+8 date
     const malaysiaCurrentDate = new Date(gmt8Date);
 
+    // Extract the year from the GMT+8 date
     let queryYear: number;
     if (!year) {
         queryYear = malaysiaCurrentDate.getFullYear();        
@@ -46,7 +45,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const db = getFirestore(firebaseApp);
 
     // get current month (by its name)
-    const currentMonth = malaysiaCurrentDate.toLocaleString('en-MY', {
+    /// NOTE: Jangan pakai 'en-MY' sebab beza. Cth SEPT vs SEP
+    const currentMonth = malaysiaCurrentDate.toLocaleString('en-US', {
         month: 'short'
     });
 

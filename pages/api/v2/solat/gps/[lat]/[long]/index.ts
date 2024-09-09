@@ -86,7 +86,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const db = getFirestore(firebaseApp);
 
     // get current month (by its name)
-    const currentMonth = malaysiaCurrentDate.toLocaleString('en-MY', {
+    /// NOTE: Jangan pakai 'en-MY' sebab beza. Cth SEPT vs SEP
+    const currentMonth = malaysiaCurrentDate.toLocaleString('en-US', {
         month: 'short'
     });
 
