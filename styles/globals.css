@@ -28,7 +28,7 @@ a {
 
   body {
     color: white;
-    background: hsl(var(--background));
+    background: var(--background);
   }
 }
 
