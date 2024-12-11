@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/components/ui/card"
 import { CheckCircle2, XCircle, LoaderCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { FadeLoader } from "react-spinners"
 
 interface MonthCardProps {
   month: string
