@@ -64,7 +64,7 @@ export default function Home() {
                 </Link>
                 <Link
                   className="inline-flex h-9 items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 sm:px-6 sm:py-4 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
-                  href="https://mpt-data-health.web.app/"
+                  href="/health"
                 >
                   Data health
                 </Link>
@@ -84,7 +84,7 @@ export default function Home() {
           </a>
         </p>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-        <Link
+          <Link
             className="text-sm hover:underline underline-offset-4 hidden sm:block"
             href="https://waktusolat.app"
           >
