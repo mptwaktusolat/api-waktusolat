@@ -31,16 +31,16 @@ export function MonthCard({ month, monthNumber, year, zone }: MonthCardProps) {
   }, [year, monthNumber, zone])
 
   return (
-    <Card className="bg-[#f8f7fe]">
+    <Card className="bg-white dark:bg-zinc-800 dark:border-zinc-700">
       <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
         {isHealthy === null ? (
-          <LoaderCircle className="spinner w-12 h-12 text-gray-500" strokeWidth={1.5} />
+          <LoaderCircle className="spinner w-12 h-12 text-gray-500 dark:text-gray-400" strokeWidth={1.5} />
         ) : isHealthy ? (
-          <CheckCircle2 className="w-12 h-12 text-green-500" />
+          <CheckCircle2 className="w-12 h-12 text-green-500 dark:text-green-400" />
         ) : (
-          <XCircle className="w-12 h-12 text-red-500" />
+          <XCircle className="w-12 h-12 text-red-500 dark:text-red-400" />
         )}
-        <span className="text-lg font-medium">{month}</span>
+        <span className="text-lg font-medium text-gray-900 dark:text-gray-100">{month}</span>
       </CardContent>
     </Card>
   )
