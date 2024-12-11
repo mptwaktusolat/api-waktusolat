@@ -52,11 +52,14 @@ export default function HealthDashboard() {
                         <li>against v2 solat API. Hence, data prior May 2023 is expected to be not available</li>
                     </ul>
                     <p>
-                        Prayer time database is{" "}
-                        <Link href="#" className="text-blue-600 hover:underline">
-                            updated periodically
+                        Prayer time database is updated periodically{" "}
+                        <Link href="https://www.e-solat.gov.my/index.php" className="text-blue-600 hover:underline">
+                            from e-solat JAKIM
                         </Link>
-                        . Fetched from e-solat JAKIM portal.
+                        {" "}portal. See fetcher implementation on{" "}
+                        <Link href={"https://github.com/mptwaktusolat/waktusolat-fetcher"} className="text-blue-600 hover:underline">
+                            GitHub
+                        </Link>.
                     </p>
                 </div>
             </div>
