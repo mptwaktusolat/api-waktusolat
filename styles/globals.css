@@ -21,6 +21,15 @@ a {
   box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: light) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 66%,
+        aliceblue);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

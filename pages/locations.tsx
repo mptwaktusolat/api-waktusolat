@@ -4,12 +4,12 @@ import useSWR from 'swr';
 import Toastify from 'toastify-js'
 import styles from "../styles/Locations.module.css";
 import "toastify-js/src/toastify.css"
-import {RotatingTriangles} from "react-loader-spinner";
+import { RotatingTriangles } from "react-loader-spinner";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Locations() {
-    const {data, error} = useSWR('/api/zones', fetcher);
+    const { data, error } = useSWR('/api/zones', fetcher);
 
     const copyToClipBoard = async copyMe => {
         try {
@@ -43,8 +43,8 @@ export default function Locations() {
         <>
             <Head>
                 <title>Locations | Waktu Solat API</title>
-                <meta name="description" content="List of JAKIM prayer zones"/>
-                <link rel="icon" href="/favicon.ico"/>
+                <meta name="description" content="List of JAKIM prayer zones" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className='mx-auto max-w-fit px-4 sm:px-7 xl:px-10 2xl:px-14'>
                 <div className={styles.description}>
@@ -72,7 +72,7 @@ export default function Locations() {
                                 data.map(zone => (
                                     <div key={zone.jakimCode} className={styles.zoneItem}>
                                         <code className={styles.zonecode}
-                                              onClick={() => copyToClipBoard(zone.jakimCode)}>
+                                            onClick={() => copyToClipBoard(zone.jakimCode)}>
                                             {zone.jakimCode}
                                         </code> - {zone.daerah}
                                     </div>
@@ -82,14 +82,14 @@ export default function Locations() {
                     ))
                 }
 
-                <div style={{paddingBottom: "1rem"}}></div>
+                <div style={{ paddingBottom: "1rem" }}></div>
                 <div className={styles.footer}>
-                <span>This data is updated on best-effort basis. If you find the data above incorrect/outdated, kindly open an issue <Link
-                    className={styles.link}
-                    href={"https://github.com/mptwaktusolat/jakim-zones-grabber/issues"}>here</Link>.</span>
+                    <span>This data is updated on best-effort basis. If you find the data above incorrect/outdated, kindly open an issue <Link
+                        className={styles.link}
+                        href={"https://github.com/mptwaktusolat/jakim-zones-grabber/issues"}>here</Link>.</span>
 
-                    <br/>
-                    <Link className={styles.link} href={"/"}>Back home</Link>
+                    <br />
+                    <Link className={styles.link} href={"/"}>Home</Link>
                 </div>
             </div>
         </>

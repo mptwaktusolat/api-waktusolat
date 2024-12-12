@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { MdNavigateNext } from "react-icons/md";
 import styles from "../styles/Home.module.css";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
 
       <main className="flex items-center justify-center min-h-svh flex-col relative overflow-hidden">
         {/* Subtle glowing object */}
-        <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[100px] opacity-50"></div>
+        <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/5 rounded-full blur-[100px] opacity-50"></div>
 
         <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48 relative z-10">
           <div className="px-4 md:px-6">
@@ -46,13 +47,13 @@ export default function Home() {
                   >
                     locations
                   </Link>{" "}
-                  in Malaysia. The data is obtained from{" "}
+                  in Malaysia, based on data from {" "}
                   <a
                     className={`font-semibold ${styles.link} dark:text-pink-300 dark:hover:text-pink-200`}
                     href="https://www.e-solat.gov.my/"
                   >
                     JAKIM
-                  </a>
+                  </a>.
                 </p>
               </div>
               <div className="space-x-4">
@@ -74,37 +75,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex fixed bottom-0 min-w-full items-center h-16 px-4 border-t md:px-6 mt-auto dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          © 2024{" "}
-          <a
-            className="hover:underline underline-offset-4 dark:text-pink-300 dark:hover:text-pink-200"
-            href="https://iqfareez.com"
-          >
-            Muhammad Fareez
-          </a>
-        </p>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-sm hover:underline underline-offset-4 hidden sm:block dark:text-gray-300 dark:hover:text-pink-200"
-            href="https://waktusolat.app"
-          >
-            Waktu Solat Project
-          </Link>
-          <Link
-            className="text-sm hover:underline underline-offset-4 dark:text-gray-300 dark:hover:text-pink-200"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe-zlZBW-8hO9XPDlLf-K7AUxtgupmD6bo4iouyLXFPAMnxFA/viewform?usp=sf_link"
-          >
-            Feedback
-          </Link>
-          <Link
-            className="text-sm hover:underline underline-offset-4 dark:text-gray-300 dark:hover:text-pink-200"
-            href="https://github.com/mptwaktusolat/mpt-server"
-          >
-            GitHub
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </>
   );
 }
