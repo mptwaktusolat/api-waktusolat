@@ -1,6 +1,8 @@
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
+![GitHub Readme Banner](https://github.com/user-attachments/assets/fa53e6bd-b66b-4b25-8400-63aeac5b2b92)
+
 # Waktu Solat API | Malaysia Prayer Time API
 
 > Formally 'MPT Server'
