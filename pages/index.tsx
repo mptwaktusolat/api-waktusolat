@@ -26,7 +26,7 @@ export default function Home() {
 
       <main className="flex items-center justify-center min-h-svh flex-col relative overflow-hidden">
         {/* Subtle glowing object */}
-        <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/5 rounded-full blur-[100px] opacity-50"></div>
+        <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[100px] opacity-50"></div>
 
         <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48 relative z-10">
           <div className="px-4 md:px-6">

@@ -20,7 +20,7 @@ export default function HealthDashboard() {
     return (
         <div className="min-h-screen relative overflow-hidden">
             {/* Subtle glowing object */}
-            <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] opacity-50"></div>
+            <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/15 rounded-full blur-[100px] opacity-50"></div>
 
             <div className="container mx-auto px-4 py-8 relative z-10">
                 <div className="flex justify-between items-center mb-8">
