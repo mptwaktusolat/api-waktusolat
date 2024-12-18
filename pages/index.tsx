@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MdNavigateNext } from "react-icons/md";
 import styles from "../styles/Home.module.css";
 import Footer from "@/components/footer";
+import TopBanner from "@/components/top-banner";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <TopBanner>
+        <strong>New</strong> &middot; Data for 2025 is now available to use!
+      </TopBanner>
       <main className="flex items-center justify-center min-h-svh flex-col relative overflow-hidden">
         {/* Subtle glowing object */}
         <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[100px] opacity-50"></div>
