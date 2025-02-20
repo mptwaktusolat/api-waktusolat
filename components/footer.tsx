@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="flex fixed bottom-0 min-w-full items-center h-16 px-4 border-t md:px-6 mt-auto dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
+        <footer className="flex flex-col sm:flex-row fixed bottom-0 min-w-full items-center h-auto sm:h-16 px-4 border-t md:px-6 mt-auto dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm py-4 sm:py-0">
             <p className="text-sm text-gray-500 dark:text-gray-400">
                 © 2025{" "}
                 <a
@@ -12,7 +12,7 @@ export default function Footer() {
                     Muhammad Fareez
                 </a>
             </p>
-            <nav className="ml-auto flex gap-4 sm:gap-6">
+            <nav className="mt-2 sm:mt-0 sm:ml-auto flex flex-wrap gap-4 sm:gap-6">
                 <Link
                     className="text-sm hover:underline underline-offset-4 hidden sm:block dark:text-gray-300 dark:hover:text-pink-200"
                     href="https://waktusolat.app"
@@ -30,6 +30,12 @@ export default function Footer() {
                     href="https://github.com/mptwaktusolat/mpt-server"
                 >
                     GitHub
+                </Link>
+                <Link
+                    className="text-sm hover:underline underline-offset-4 dark:text-gray-300 dark:hover:text-pink-200"
+                    href="https://umami.iqfareez.com/share/dQGLdz7BivSE54it/api.waktusolat.app"
+                >
+                    Analytics
                 </Link>
             </nav>
         </footer>
