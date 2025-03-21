@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 }
 
 export async function getJakimZonesList() : Promise<JakimZonesItem[]> {
-    const jakimZonesSourceData = 'https://raw.githubusercontent.com/mptwaktusolat/jakim-zones-grabber/main/new.json'
+    const jakimZonesSourceData = 'https://raw.githubusercontent.com/mptwaktusolat/jakim-zones-grabber/main/locations.json'
     const res = await axios.get(jakimZonesSourceData);
     return res.data;
 }
